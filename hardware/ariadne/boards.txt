@@ -84,6 +84,27 @@ ariadne1280M.build.variant=arduino:mega
 
 ##############################################################
 
+ariadne1284P.name=Atmega 1284p (Ariadne Bootloader)
+ariadne1284P.upload.protocol=arduino
+#ariadne1284P.upload.maximum_size=130048 #if no boot loader is present
+ariadne1284P.upload.maximum_size=126976
+ariadne1284P.upload.speed=57600
+ariadne1284P.bootloader.low_fuses=0xFF
+ariadne1284P.bootloader.high_fuses=0xDE
+ariadne1284P.bootloader.extended_fuses=0xFD
+ariadne1284P.bootloader.path=ariadne
+ariadne1284P.bootloader.file= ariadne_atmega1284p.hex
+ariadne1284P.bootloader.unlock_bits=0x3F
+ariadne1284P.bootloader.lock_bits=0x0F
+
+ariadne1284P.build.mcu=atmega1284p
+ariadne1284P.build.f_cpu=16000000L
+#ariadne1284P.build.core=arduino:arduino
+ariadne1284P.build.core=standard
+ariadne1284P.build.variant=standard
+
+##############################################################
+
 ariadne2560M.name=Arduino Mega 2560 (Ariadne Bootloader)
 
 ariadne2560M.upload.protocol=stk500v2
@@ -102,6 +123,7 @@ ariadne2560M.build.mcu=atmega2560
 ariadne2560M.build.f_cpu=16000000L
 ariadne2560M.build.core=arduino:arduino
 ariadne2560M.build.variant=arduino:mega
+
 
 ##############################################################
 
