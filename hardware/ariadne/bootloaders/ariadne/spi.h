@@ -73,9 +73,9 @@
 	#define ETH_SS		PINB4  //Pin 5
 
 	/** SD card SS pin */
-	//#define SD_DDR	DDRG
-	//#define SD_PORT	PORTG
-	//#define SD_SS	PING5  //Pin 04
+	#define SD_DDR	DDRC
+	#define SD_PORT	PORTC
+	#define SD_SS	PINC7  //Pin 04
 
 	/** Onboard RED LED is connected to pin PD7 on SEM 1284P board */
 	#define LED_DDR     DDRD
