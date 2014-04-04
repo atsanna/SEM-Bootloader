@@ -5,7 +5,7 @@ make clean
 make atmega328
 make atmega328_ethernet
 #make atmega2560
-make atmega1284p
+make atmega1284
 #make atmega8
 #make atmega168
 #make debug328
