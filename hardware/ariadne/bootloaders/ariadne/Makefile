@@ -297,9 +297,9 @@ atmega1284: $(PROGRAM)_atmega1284p.lst
 atmega1284_isp: atmega1284
 atmega1284_isp: TARGET = atmega1284p
 atmega1284_isp: MCU_TARGET = atmega1284p
-# 1024 byte boot
-atmega1284_isp: HFUSE = DE
-# Low power xtal (16MHz) 16KCK/14CK+65ms
+# 4096 word boot
+atmega1284_isp: HFUSE = D8
+# External power xtal (16MHz) 16KCK/14CK+65ms
 atmega1284_isp: LFUSE = FF
 # 2.7V brownout
 atmega1284_isp: EFUSE = FD
