@@ -36,9 +36,9 @@
 //Retry Count
 #define REG_RCR         0x0019
 //RX Memory Size
-#define REG_RMSR        0x01A
+//#define REG_RMSR        0x01A
 //TX Memory Size
-#define REG_TMSR        0x01B
+//#define REG_TMSR        0x01B
 //PPPoE Auth
 #define REG_PATR0       0x001C
 #define REG_PATR1       0x001D
@@ -55,7 +55,6 @@
 //Unreachable Port
 #define REG_UPORT0      0x02E
 #define REG_UPORT1      0x02F
-//W5200 addr below this line
 */
 /**
  * Socket 0 addresses */
@@ -214,23 +213,23 @@
 #define REG_S3_RX_RSR1  0x7027
 #define REG_S3_RX_RD0   0x7028
 #define REG_S3_RX_RD1   0x7029
-//changes needed below this line
-#define S0_TX_START 0x4000
-#define S0_TX_END   0x4800
-#define S1_TX_START 0x4800
-#define S1_TX_END   0x5000
-#define S2_TX_START 0x5000
-#define S2_TX_END   0x5800
-#define S3_TX_START 0x5800
+
+#define S0_TX_START 0x8000
+#define S0_TX_END   0x8800
+#define S1_TX_START 0x8800
+#define S1_TX_END   0x9000
+#define S2_TX_START 0x9000
+#define S2_TX_END   0x9800
+#define S3_TX_START 0x9800
 #define S3_TX_END   0x6000
-#define S0_RX_START 0x6000
-#define S0_RX_END   0x6800
-#define S1_RX_START 0x6800
-#define S1_RX_END   0x7000
-#define S2_RX_START 0x7000
-#define S2_RX_END   0x7800
-#define S3_RX_START 0x7800
-#define S3_RX_END   0x8000
+#define S0_RX_START 0xC000
+#define S0_RX_END   0xC800
+#define S1_RX_START 0xC800
+#define S1_RX_END   0xD000
+#define S2_RX_START 0xD000
+#define S2_RX_END   0xD800
+#define S3_RX_START 0xD800
+#define S3_RX_END   0xE000
 
 #define MR_CLOSED         0x00
 #define MR_TCP            0x01
@@ -257,7 +256,7 @@
  * This register has the status value of socket n. The main status is shown
  * in the below diagram. */
 #define SOCK_CLOSED       0x00
-#define SOCK_ARP1         0x11
+//#define SOCK_ARP1         0x11
 #define SOCK_INIT         0x13
 #define SOCK_LISTEN       0x14
 #define SOCK_SYNSENT      0x15
@@ -268,9 +267,9 @@
 #define SOCK_TIME_WAIT    0x1B
 #define SOCK_CLOSE_WAIT   0x1C
 #define SOCK_LAST_ACK     0x1D
-#define SOCK_ARP2         0x21
+//#define SOCK_ARP2         0x21
 #define SOCK_UDP          0x22
-#define SOCK_ARP3         0x31
+//#define SOCK_ARP3         0x31
 #define SOCK_IPRAW        0x32
 #define SOCK_MACRAW       0x42
 #define SOCK_PPPOE        0x5F
@@ -283,7 +282,7 @@
 #define IR_RECV      0x04
 #define IR_DISCON    0x02
 #define IR_CON       0x01
-#define IR_CLR       0x00
+//#define IR_CLR       0x00
 
 
 /* Network settings */
