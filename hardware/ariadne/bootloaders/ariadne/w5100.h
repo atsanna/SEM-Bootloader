@@ -1,8 +1,8 @@
 #ifndef w5100_h
 #define w5100_h
 
-#define W5100_ETHERNET_SHIELD // Arduino Ethenret Shield and Compatibles ...
-//#define W5200_ETHERNET_SHIELD // WIZ820io, W5200 Ethernet Shield 
+//#define W5100_ETHERNET_SHIELD // Arduino Ethenret Shield and Compatibles ...
+#define W5200_ETHERNET_SHIELD // WIZ820io, W5200 Ethernet Shield 
 //#define W5500_ETHERNET_SHIELD   // WIZ550io, ioShield series of WIZnet
 
 #if defined(W5500_ETHERNET_SHIELD)
