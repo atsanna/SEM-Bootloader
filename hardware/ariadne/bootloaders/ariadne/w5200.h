@@ -3,49 +3,50 @@
 
 
 //Mode
-#define REG_MR          0x000
+#define REG_MR          0x0000
 //GW Address
-#define REG_GAR0        0x001
-#define REG_GAR1        0x002
-#define REG_GAR2        0x003
-#define REG_GAR3        0x004
+#define REG_GAR0        0x0001
+#define REG_GAR1        0x0002
+#define REG_GAR2        0x0003
+#define REG_GAR3        0x0004
 //Mask
-#define REG_SUBR0       0x005
-#define REG_SUBR1       0x006
-#define REG_SUBR2       0x007
-#define REG_SUBR3       0x008
+#define REG_SUBR0       0x0005
+#define REG_SUBR1       0x0006
+#define REG_SUBR2       0x0007
+#define REG_SUBR3       0x0008
 //Mac Address (Source Hardware Address)
-#define REG_SHAR0       0x009
-#define REG_SHAR1       0x00A
-#define REG_SHAR2       0x00B
-#define REG_SHAR3       0x00C
-#define REG_SHAR4       0x00D
-#define REG_SHAR5       0x00E
+#define REG_SHAR0       0x0009
+#define REG_SHAR1       0x000A
+#define REG_SHAR2       0x000B
+#define REG_SHAR3       0x000C
+#define REG_SHAR4       0x000D
+#define REG_SHAR5       0x000E
 //IP Address (Source IP Address)
-#define REG_SIPR0       0x00F
-#define REG_SIPR1       0x010
-#define REG_SIPR2       0x011
-#define REG_SIPR3       0x012
+#define REG_SIPR0       0x000F
+#define REG_SIPR1       0x0010
+#define REG_SIPR2       0x0011
+#define REG_SIPR3       0x0012
 //Interrupt
-#define REG_IR          0x015
+#define REG_IR          0x0015
 //Interrupt Mask
-#define REG_IMR         0x016
+#define REG_IMR         0x0016
 //Retry Time
-#define REG_RTR0        0x017
-#define REG_RTR1        0x018
+#define REG_RTR0        0x0017
+#define REG_RTR1        0x0018
 //Retry Count
-#define REG_RCR         0x019
+#define REG_RCR         0x0019
 //RX Memory Size
 #define REG_RMSR        0x01A
 //TX Memory Size
 #define REG_TMSR        0x01B
 //PPPoE Auth
-#define REG_PATR0       0x01C
-#define REG_PATR1       0x01D
+#define REG_PATR0       0x001C
+#define REG_PATR1       0x001D
 //PPP LCP Request Timer
-#define REG_PTIMER      0x028
+#define REG_PTIMER      0x0028
 //PPP LCP Magic Number
-#define REG_PMAGIC      0x029
+#define REG_PMAGIC      0x0029
+/* Reserved in the W5200
 //Unreachable IP Address
 #define REG_UIPR0       0x02A
 #define REG_UIPR1       0x02B
@@ -55,6 +56,7 @@
 #define REG_UPORT0      0x02E
 #define REG_UPORT1      0x02F
 //W5200 addr below this line
+*/
 /**
  * Socket 0 addresses */
 //Mode
