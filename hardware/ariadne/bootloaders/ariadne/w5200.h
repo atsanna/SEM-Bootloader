@@ -221,7 +221,7 @@
 #define S2_TX_START 0x9000
 #define S2_TX_END   0x9800
 #define S3_TX_START 0x9800
-#define S3_TX_END   0x6000
+#define S3_TX_END   0xA000
 #define S0_RX_START 0xC000
 #define S0_RX_END   0xC800
 #define S1_RX_START 0xC800
