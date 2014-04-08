@@ -24,8 +24,8 @@ uint8_t registerBuffer[REGISTER_BLOCK_SIZE] = {
 	0,            // IMR Interrupt Mask Register
 	0x07, 0xd0,   // RTR Retry Time-value Register
 	0x08,         // RCR Retry Count Register
-	0,            // Reserved in w5200, in place to keep the size in the EEPROM equal
-	0             // Reserved in w5200, in place to keep the size in the EEPROM equal
+	0,            // Reserved in w5200
+	0             // Reserved in w5200
 };
 
 
@@ -72,7 +72,7 @@ void netInit(void)
 	)
 
 	/** Configure Wiznet chip. Network settings */
-	for(i = 0; i < (REGISTER_BLOCK_SIZE-2); i++)
+	for(i = 0; i < REGISTER_BLOCK_SIZE; i++)
 		spiWriteReg(i, registerBuffer[i]);
 
 	DBG_NET(tracePGMlnNet(mDebugNet_DONE);)
