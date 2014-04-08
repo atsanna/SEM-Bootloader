@@ -23,7 +23,7 @@ uint8_t registerBuffer[REGISTER_BLOCK_SIZE] = {
 	0,            // IR Interrupt Register
 	0,            // IMR Interrupt Mask Register
 	0x07, 0xd0,   // RTR Retry Time-value Register
-	0x80,         // RCR Retry Count Register
+	0x08,         // RCR Retry Count Register
 	0,            // Reserved in w5200, in place to keep the size in the EEPROM equal
 	0             // Reserved in w5200, in place to keep the size in the EEPROM equal
 };
