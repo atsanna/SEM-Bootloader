@@ -117,7 +117,6 @@ void spiInit(void)
 	SD_DDR |= _BV(SD_SS);
 
 	#if (LED != SCK)
-	/** Set up pins to flash the onboard led */
 	/** Set led pin to high */
 	LED_PORT |= _BV(LED);
 	/** Set led pin as output */
