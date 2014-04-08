@@ -303,8 +303,8 @@
 #define GW_ADDR     192,168,84,1
 #define MAC_ADDR    0xDE,0xAD,0xBE,0xEF,0xFE,0xED
 
-#endif
-
 void netInit(void);
+
+#endif
 
 #endif
