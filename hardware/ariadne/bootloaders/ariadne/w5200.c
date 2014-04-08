@@ -72,7 +72,7 @@ void netInit(void)
 	)
 
 	/** Configure Wiznet chip. Network settings */
-	for(i = 0; i < REGISTER_BLOCK_SIZE; i++)
+	for(i = 0; i < (REGISTER_BLOCK_SIZE-2); i++)
 		spiWriteReg(i, registerBuffer[i]);
 
 	DBG_NET(tracePGMlnNet(mDebugNet_DONE);)
