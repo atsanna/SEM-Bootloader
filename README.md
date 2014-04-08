@@ -1,5 +1,5 @@
-# [Ariadne Bootloader for Arduino][1]
-[1]: http://codebendercc.github.com/Ariadne-Bootloader/
+# [SEM Bootloader for Arduino][1]
+[1]: http://github.com/arjenhiemstra/SEM-Bootloader/
 
 
 ## Bootloader for Arduino with Ethernet
