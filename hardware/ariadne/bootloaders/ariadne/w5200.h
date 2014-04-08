@@ -1,6 +1,6 @@
 #ifndef w5100_h
 #define w5100_h
-
+#endif
 
 //Mode
 #define REG_MR          0x0000
@@ -296,4 +296,4 @@
 void netInit(void);
 
 
-#endif
+
