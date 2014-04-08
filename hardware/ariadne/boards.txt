@@ -99,8 +99,8 @@ ariadne1284P.bootloader.lock_bits=0x0F
 
 ariadne1284P.build.mcu=atmega1284p
 ariadne1284P.build.f_cpu=16000000L
-#ariadne1284P.build.core=arduino:arduino
-ariadne1284P.build.core=standard
+ariadne1284P.build.core=arduino:arduino
+#ariadne1284P.build.core=standard
 ariadne1284P.build.variant=standard
 
 ##############################################################
