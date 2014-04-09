@@ -79,7 +79,11 @@ uint8_t spiReadReg(uint16_t address)
 	SS_HIGH();
 	returnValue = SPDR;
 	SPCR = 0;
-
+	
+	DBG_SPI_EX(
+		tracePGM(mDebugSpi_COMMA);
+		tracenum(returnValue);
+	)
 	return(returnValue);
 }
 
