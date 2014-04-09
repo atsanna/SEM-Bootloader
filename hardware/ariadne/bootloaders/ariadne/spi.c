@@ -52,12 +52,12 @@ void spiWriteWord(uint16_t address, uint16_t value)
 /** Read uint8_t from Ethernet controller */
 uint8_t spiReadReg(uint16_t address)
 {
-	#if defined(SPAM_ME)
+	//#if defined(SPAM_ME)
 	DBG_SPI_EX(
 		tracePGMlnSpi(mDebugSpi_NRREG);
 		tracenum(address);
 	)
-	#endif
+	//#endif
 
 	uint8_t returnValue;
 
