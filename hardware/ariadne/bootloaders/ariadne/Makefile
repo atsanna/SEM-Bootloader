@@ -305,6 +305,25 @@ atmega1284_isp: LFUSE = FF
 atmega1284_isp: EFUSE = FD
 atmega1284_isp: isp
 
+
+debug1284: TARGET = debug1284p
+debug1284: MCU_TARGET = atmega1284p
+debug1284: CFLAGS += '-DDEBUG_MAIN=1' '-DDEBUG_NET=1' '-DDEBUG_TFTP=1' '-DDEBUG_VALD=1' '-DBAUD_RATE=115200'
+debug1284: AVR_FREQ = 16000000L
+debug1284: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
+debug1284: $(PROGRAM)_debug1284p.hex
+debug1284: $(PROGRAM)_debug1284p.lst
+
+debug1284_isp: debug1284
+debug1284_isp: TARGET = debug1284p
+debug1284_isp: MCU_TARGET = atmega1284p
+# 4096 word boot
+debug1284_isp: HFUSE = D8
+# External power xtal (16MHz) 16KCK/14CK+65ms
+debug1284_isp: LFUSE = FF
+# 2.7V brownout
+debug1284_isp: EFUSE = FD
+debug1284_isp: isp
 # # Sanguino has a minimum boot size of 1024 bytes, so enable extra functions
 # sanguino: TARGET = atmega644p
 # sanguino: MCU_TARGET = atmega644p
