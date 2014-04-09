@@ -58,7 +58,7 @@ static void sockInit(uint16_t port)
 		spiWriteReg(REG_S3_CR, CR_OPEN);
 
 		// Read Status
-		if(spiReadReg(REG_S3_SR) != SOCK_UDP)
+		if(spiReadReg(REG_S3_SR) != SOCK_UDP) //FIXME: w5200 fails on this test
 			// Close Socket if it wasn't initialized correctly
 			spiWriteReg(REG_S3_CR, CR_CLOSE);
 
