@@ -135,7 +135,7 @@ void spiInit(void)
   	
   	SPI_DDR = _BV(SCK) | _BV(MOSI);
   	
-  	SPI_DDR |= _BV(SS);
+  	ETH_PORT |= _BV(SS);
   	
 	/** Set up SPI
 	 ** Set the Double SPI Speed Bit */
