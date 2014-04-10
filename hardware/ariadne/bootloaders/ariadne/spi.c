@@ -135,7 +135,7 @@ void spiInit(void)
   	
   	SPI_DDR = _BV(SCK) | _BV(MOSI);
   	
-  	SPI_DDR  |=  _BV(4);  //Atmage1284, 2561, needs checking for other chips
+  	SPI_DDR |= _BV(SS);
   	
 	/** Set up SPI
 	 ** Set the Double SPI Speed Bit */
