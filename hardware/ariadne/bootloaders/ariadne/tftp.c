@@ -49,8 +49,9 @@ static void sockInit(uint16_t port)
 
 
 	spiWriteReg(REG_S3_CR, CR_CLOSE);
-        while(spiReadReg(REG_S3_CR)  //wait for command to complete
-          ;
+        while(spiReadReg(REG_S3_CR)) {
+        	//wait for command to complete	
+        }  
         
 	do {
                 // Write interrupt
@@ -61,8 +62,9 @@ static void sockInit(uint16_t port)
 		spiWriteWord(REG_S3_PORT0, port);
 		// Open Socket
         	spiWriteReg(REG_S3_CR, CR_OPEN);
-                while(spiReadReg(REG_S3_CR)  //wait for command to complete
-                  ;
+        	while(spiReadReg(REG_S3_CR)) {
+        		//wait for command to complete	
+ 		} 
 		// Read Status
 		if(spiReadReg(REG_S3_SR) != SOCK_UDP)
 			// Close Socket if it wasn't initialized correctly
