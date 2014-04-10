@@ -96,8 +96,28 @@ void netInit(void)
 	)
 
 	/** Configure Wiznet chip. Network settings */
-	for(i = 0; i < REGISTER_BLOCK_SIZE; i++)
-		spiWriteReg(i, registerBuffer[i]);
+//	for(i = 0; i < REGISTER_BLOCK_SIZE; i++)
+//		spiWriteReg(i, registerBuffer[i]);
+
+		spiWriteReg(0, registerBuffer[0]);
+
+
+                spiWriteReg(0x001B, 0x55);//TSMR  W5100
+                spiWriteReg(0x001A, 0x55);//RSMR  W5100
+                
+                
+		for(i = 9; i < 15; i++) {
+			spiWriteReg(i, registerBuffer[i]);
+		}
+		for(i = 15; i < 19; i++) {
+			spiWriteReg(i, registerBuffer[i]);
+		}
+		for(i = 1; i < 5; i++) {
+			spiWriteReg(i, registerBuffer[i]);
+		}
+		for(i = 5; i < 9; i++) {
+			spiWriteReg(i, registerBuffer[i]);
+		}
 
 	DBG_NET(tracePGMlnNet(mDebugNet_DONE);)
 }
