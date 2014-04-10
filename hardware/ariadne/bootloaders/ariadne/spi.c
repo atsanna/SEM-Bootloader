@@ -102,10 +102,12 @@ void spiInit(void)
 	 * functions. */
 
 	/** Set SPI pins high */
-	SPI_PORT = _BV(SCK) | _BV(MISO) | _BV(MOSI) | _BV(SS);
+	//SPI_PORT = _BV(SCK) | _BV(MISO) | _BV(MOSI) | _BV(SS);
+	SPI_PORT |= _BV(SS);
 	/** Set SPI pins as output */
-	SPI_DDR = _BV(SCK) | _BV(MOSI) | _BV(SS);
-
+	//SPI_DDR = _BV(SCK) | _BV(MOSI) | _BV(SS);
+	SPI_DDR |= _BV(SS);
+	
 	#if (ETH_SS != SS)
 	/** Initialize extra SS pin used in some boards (mega) */
 	/** Set ethernet SS high */
@@ -127,9 +129,17 @@ void spiInit(void)
 	LED_DDR |= _BV(LED);
 	#endif
 
+	//Set as Master
+	SPCR |= _BV(MSTR);
+  	SPCR |= _BV(SPE);
+  	
+  	SPI_DDR = _BV(SCK) | _BV(MOSI);
+  	
+  	SPI_DDR  |=  _BV(4);  //Atmage1284, 2561, needs checking for other chips
+  	
 	/** Set up SPI
 	 ** Set the Double SPI Speed Bit */
-	SPSR = (1 << SPI2X);
+	//SPSR = (1 << SPI2X);
 
 	DBG_SPI(tracePGMlnSpi(mDebugSpi_DONE);)
 }
