@@ -77,7 +77,7 @@ void netInit(void)
 
 		spiWriteReg(0, registerBuffer[0]);
 
-                for (int i=0; i<8; i++) {
+                for (i=0; i<8; i++) {
                   spiWriteReg((0x4000 + i * 0x100 + 0x001F), 0x02);
                   spiWriteReg((0x4000 + i * 0x100 + 0x001E), 0x02);
                 }
