@@ -47,20 +47,29 @@ static void sockInit(uint16_t port)
 		tracenum(port);
 	)
 
-	spiWriteReg(REG_S3_CR, CR_CLOSE);
 
+	spiWriteReg(REG_S3_CR, CR_CLOSE);
+        while(spiReadReg(REG_S3_CR)
+          ;
+        
 	do {
-		// Write TFTP Port
+                // Write interrupt
+		spiWriteReg(REG_S3_IR, 0xFF);
+                // Write mode
+                spiWriteReg(REG_S3_MR, MR_UDP);
+                // Write TFTP Port
 		spiWriteWord(REG_S3_PORT0, port);
-		// Write mode
+		
 		spiWriteReg(REG_S3_MR, MR_UDP);
 		// Open Socket
-		spiWriteReg(REG_S3_CR, CR_OPEN);
-
+        	spiWriteReg(REG_S3_CR, CR_OPEN);
+                while(spiReadReg(REG_S3_CR)
+                  ;
 		// Read Status
-		if(spiReadReg(REG_S3_SR) != SOCK_UDP) //FIXME: w5200 fails on this test
+		if(spiReadReg(REG_S3_SR) != SOCK_UDP)
 			// Close Socket if it wasn't initialized correctly
 			spiWriteReg(REG_S3_CR, CR_CLOSE);
+
 
 		// If socket correctly opened continue
 	} while(spiReadReg(REG_S3_SR) != SOCK_UDP);
