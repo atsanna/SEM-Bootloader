@@ -102,11 +102,11 @@ void spiInit(void)
 	 * functions. */
 
 	/** Set SPI pins high */
-	//SPI_PORT = _BV(SCK) | _BV(MISO) | _BV(MOSI) | _BV(SS);
-	SPI_PORT |= _BV(SS);
+	SPI_PORT = _BV(SCK) | _BV(MISO) | _BV(MOSI) | _BV(SS);
+	//SPI_PORT |= _BV(SS);
 	/** Set SPI pins as output */
-	//SPI_DDR = _BV(SCK) | _BV(MOSI) | _BV(SS);
-	SPI_DDR |= _BV(SS);
+	SPI_DDR = _BV(SCK) | _BV(MOSI) | _BV(SS);
+	//SPI_DDR |= _BV(SS);
 	
 	#if (ETH_SS != SS)
 	/** Initialize extra SS pin used in some boards (mega) */
@@ -130,12 +130,12 @@ void spiInit(void)
 	#endif
 
 	//Set as Master
-	SPCR |= _BV(MSTR);
-  	SPCR |= _BV(SPE);
+	//SPCR |= _BV(MSTR);
+  	//SPCR |= _BV(SPE);
   	
-  	SPI_DDR = _BV(SCK) | _BV(MOSI);
+  	//SPI_DDR = _BV(SCK) | _BV(MOSI);
   	
-  	ETH_PORT |= _BV(SS);
+  	//ETH_PORT |= _BV(SS);
   	
 	/** Set up SPI
 	 ** Set the Double SPI Speed Bit */
