@@ -26,14 +26,20 @@ void spiWriteReg(uint16_t address, uint8_t value)
 	SPCR = _BV(SPE) | _BV(MSTR); // Set SPI as master
 	SS_LOW();
 
-	SPDR = SPI_WRITE;
-	while(!(SPSR & _BV(SPIF)));
+	//SPDR = SPI_WRITE;
+	//while(!(SPSR & _BV(SPIF)));
 
 	SPDR = address >> 8;
 	while(!(SPSR & _BV(SPIF)));
 
 	SPDR = address & 0xff;
 	while(!(SPSR & _BV(SPIF)));
+	
+	SPDR = 0x80;
+	while(!(SPSR & _BV(SPIF)));
+	
+	SPDR = 0x01;
+	while(!(SPSR & _BV(SPIF)));	
 
 	SPDR = value;
 	while(!(SPSR & _BV(SPIF)));
