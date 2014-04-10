@@ -49,7 +49,7 @@ static void sockInit(uint16_t port)
 
 
 	spiWriteReg(REG_S3_CR, CR_CLOSE);
-        while(spiReadReg(REG_S3_CR)
+        while(spiReadReg(REG_S3_CR)  //wait for command to complete
           ;
         
 	do {
@@ -59,11 +59,9 @@ static void sockInit(uint16_t port)
                 spiWriteReg(REG_S3_MR, MR_UDP);
                 // Write TFTP Port
 		spiWriteWord(REG_S3_PORT0, port);
-		
-		spiWriteReg(REG_S3_MR, MR_UDP);
 		// Open Socket
         	spiWriteReg(REG_S3_CR, CR_OPEN);
-                while(spiReadReg(REG_S3_CR)
+                while(spiReadReg(REG_S3_CR)  //wait for command to complete
                   ;
 		// Read Status
 		if(spiReadReg(REG_S3_SR) != SOCK_UDP)
