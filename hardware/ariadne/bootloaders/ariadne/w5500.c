@@ -73,7 +73,7 @@ void netInit(void)
 
 	/** Configure Wiznet chip. Network settings */
 	for(i = 0; i < REGISTER_BLOCK_SIZE; i++)
-		spiWriteReg(i, 0x00, registerBuffer[i]);
+		spiWriteReg(i, 0x04, registerBuffer[i]);
 	
 	for (int i=0; i<8; i++) {
         	uint8_t cntl_byte = (0x0C + (i<<5));
