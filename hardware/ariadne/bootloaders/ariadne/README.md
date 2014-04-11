@@ -1,7 +1,6 @@
 Ethernet/TFTP Bootloader for the ATmega328P/Atmeage2560/Atmeage1280/Atmega1284P
 ==============================================
-Support for Wiznet5100, Wiznet5200 and (WIP) Wiznet5500
---------------------
+/w support for Wiznet5100, Wiznet5200 and (WIP) Wiznet5500
 
 
 Flashing bootloader:
