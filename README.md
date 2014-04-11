@@ -1,6 +1,9 @@
 # [SEM Bootloader for Arduino][1]
 [1]: http://github.com/arjenhiemstra/SEM-Bootloader/
 
+### Ethernet/TFTP Bootloader for the ATmega328P/Atmega2560/Atmega1280/Atmega1284P ###
+
+### /w support for Wiznet5100, Wiznet5200 and (WIP) Wiznet5500 ###
 
 ## Bootloader for Arduino (and variants) with Ethernet
 This is a beta stage bootloader for Arduino Ethernet board and the regular Arduino with Ethernet Shield.
