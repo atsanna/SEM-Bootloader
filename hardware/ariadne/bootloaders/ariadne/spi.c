@@ -76,7 +76,30 @@ void spiWriteReg(uint16_t address, uint8_t value)
 
 
 }
+void spiWriteW5200(uint16_t address, uint8_t cb, uint8_t value)
+{
 
+	SPCR = _BV(SPE) | _BV(MSTR); // Set SPI as master
+	SS_LOW();
+
+	SPDR = address >> 8;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = address & 0xff;
+	while(!(SPSR & _BV(SPIF)));
+	
+	SPDR = cb;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = value;
+	while(!(SPSR & _BV(SPIF)));
+
+	SS_HIGH();
+	SPCR = 0; // Turn off SPI
+	
+
+
+}
 void spiWriteWord(uint16_t address, uint16_t value)
 {
 	// Write uint16_t to Ethernet controller
