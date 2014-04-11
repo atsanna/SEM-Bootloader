@@ -70,9 +70,9 @@ void spiWriteReg(uint16_t address, uint8_t cb, uint8_t value)
 	while(!(SPSR & _BV(SPIF)));
 
 	SS_HIGH();
-	SPCR = 0; // Turn off SPI
 	
 	cb = 0; //prevents compiler whining about unused cb variable
+	SPCR = cb; // Turn off SPI
 }
 
 void spiWriteWord(uint16_t address, uint8_t cb, uint16_t value)
@@ -144,7 +144,9 @@ uint8_t spiReadReg(uint16_t address, uint8_t cb)
 
 	SS_HIGH();
 	returnValue = SPDR;
-	SPCR = 0;
+	
+	cb = 0; //prevents compiler whining about unused cb variable
+	SPCR = cb; // Turn off SPI
 
 
 
@@ -154,7 +156,6 @@ uint8_t spiReadReg(uint16_t address, uint8_t cb)
 	)
 	return(returnValue);
 	
-	cb = 0; //prevents compiler whining about unused cb variable
 }
 
 uint16_t spiReadWord(uint16_t address, uint8_t cb)
