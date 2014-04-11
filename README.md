@@ -355,15 +355,15 @@ Tested Arduino Boards:
 [18]: http://www.arduino.cc/en/Main/ArduinoBoardUno
 [19]: http://www.arduino.cc/en/Main/ArduinoBoardDuemilanove
 [20]: http://arduino.cc/en/Main/arduinoBoardMega2560
-[20]: http://www.getsem.info
+[21]: http://www.getsem.info
 ## Other Tested Boards
 These boards have been also tested and found to be working with Ariadne Bootloader. I don't have any
 of these so a big ___thank you___ goes to the people that took their time to test them.
 
-* [ITead Studio IBoard][21]
-* [Sparkfun Ethernet Pro][22]
-[21]: http://imall.iteadstudio.com/im120410001.html
-[22]: https://www.sparkfun.com/products/10536
+* [ITead Studio IBoard][22]
+* [Sparkfun Ethernet Pro][23]
+[22]: http://imall.iteadstudio.com/im120410001.html
+[23]: https://www.sparkfun.com/products/10536
 
 ## Contributors
 [Hachi Manzur](hemanzur@gmail.com) (AVRISP mkII programmer, testing)
