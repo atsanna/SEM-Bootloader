@@ -2,7 +2,7 @@
 [1]: http://github.com/arjenhiemstra/SEM-Bootloader/
 
 
-## Bootloader for Arduino with Ethernet
+## Bootloader for Arduino (and variants) with Ethernet
 This is a beta stage bootloader for Arduino Ethernet board and the regular Arduino with Ethernet Shield.
 It is based on previous unfinished work by the Arduino developers. The bootloader implements a TFTP
 server on the Arduino board and flashing works using any regular TFTP client.
@@ -92,9 +92,9 @@ but they still need refinement.
 The default built-in network settings of the bootloader are listed below.
 
 `
-* IP Address:  192.168.1.128
+* IP Address:  192.168.84.128
 * Subnet Mask: 255.255.255.0
-* Gateway:     192.168.1.1
+* Gateway:     192.168.84.1
 * MAC Address: 0xDE.0xAD.0xBE.0xEF.0xFE.0xED
 
 * TFTP Negotiation Port: 69
@@ -212,10 +212,10 @@ TFTP [-i] host [GET | PUT] source [destination]
   destination     Specifies where to transfer the file.
 
 
-C:\Documents and Settings\Administrator>tftp -i 192.168.1.128 PUT sketch.bin
+C:\Documents and Settings\Administrator>tftp -i 192.168.84.128 PUT sketch.bin
 tftp: can't read from local file 'sketch.bin'
 
-C:\Documents and Settings\Administrator>tftp -i 192.168.1.128 PUT sketch.bin
+C:\Documents and Settings\Administrator>tftp -i 192.168.84.128 PUT sketch.bin
 ```
 
 #### Linux
@@ -235,9 +235,9 @@ tftp [ip] [port]
 
 For the default bootloader settings that would be:
 ```
-tftp 192.168.1.128 69
+tftp 192.168.84.128 69
 ```
-In this case it could just be `tftp 192.168.1.128` as __69__ is the default tftp port and the client
+In this case it could just be `tftp 192.168.84.128` as __69__ is the default tftp port and the client
 would automatically connect to it. For any other port you have to explicitly set it.
 
 Now you should have been greeted by the
@@ -309,10 +309,10 @@ an external port of your choice on the router to the internal port and ip of the
 network.
 [11]: http://en.wikipedia.org/wiki/Port_forwarding
 
-An example is that you have 2 devices, one at *192.168.1.128* and one at *192.168.1.129*. They both listen
+An example is that you have 2 devices, one at *192.168.84.128* and one at *192.168.84.129*. They both listen
 to port __69__ for the initial connection. In this case you can translate external port __6969__(any
-random port will do) on your router to `192.168.1.128:`__69__ and external port __6970__ to
-`192.168.1.129:`__69__ and specify these in the tftp client you are using.
+random port will do) on your router to `192.168.84.128:`__69__ and external port __6970__ to
+`192.168.84.129:`__69__ and specify these in the tftp client you are using.
 
 Port Forward has [excellent guides][12] on how to enable port forwarding for a vast number of routers.
 [12]: http://portforward.com/english/routers/port_forwarding/
