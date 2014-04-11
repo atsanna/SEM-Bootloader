@@ -308,7 +308,7 @@ atmega1284_isp: isp
 
 debug1284: TARGET = debug1284p
 debug1284: MCU_TARGET = atmega1284p
-debug1284: CFLAGS += '-DDEBUG_SPI=1' '-DW5200=1' '-DBAUD_RATE=115200'
+debug1284: CFLAGS += '-DDEBUG_TFTP=1' '-DW5500=1' '-DBAUD_RATE=115200'
 debug1284: AVR_FREQ = 16000000L
 debug1284: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
 debug1284: $(PROGRAM)_debug1284p.hex
