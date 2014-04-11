@@ -1,6 +1,3 @@
-/* ALL VALUES BELOW NEED CHECKING!!! */
-
-
 #ifndef w5100_h
 #define w5100_h
 #endif
