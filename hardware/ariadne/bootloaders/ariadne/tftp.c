@@ -10,12 +10,12 @@
 /*W5500 SPI OP Codes*/
 
 //Socket Read:
-#define S2_R_CB = 0x48
-#define S3_R_CB = 0x68
+#define S2_R_CB 0x48
+#define S3_R_CB 0x68
 
 //Socket Write:
-#define S2_W_CB = 0x4C
-#define S3_W_CB = 0x6C
+#define S2_W_CB 0x4C
+#define S3_W_CB 0x6C
 
 /*end W5500 SPI OP Codes*/
 
