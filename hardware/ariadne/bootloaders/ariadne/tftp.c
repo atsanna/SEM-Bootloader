@@ -48,31 +48,31 @@ static void sockInit(uint16_t port)
 	)
 
 
-	spiWriteReg(REG_S3_CR, CR_CLOSE);
-        while(spiReadReg(REG_S3_CR)) {
+	spiWriteReg(REG_S3_CR, 0, CR_CLOSE);
+        while(spiReadReg(REG_S3_CR, 0)) {
         	//wait for command to complete	
         }  
         
 	do {
                 // Write interrupt
-		spiWriteReg(REG_S3_IR, 0xFF);
+		spiWriteReg(REG_S3_IR, 0, 0xFF);
                 // Write mode
-                spiWriteReg(REG_S3_MR, MR_UDP);
+                spiWriteReg(REG_S3_MR, 0, MR_UDP);
                 // Write TFTP Port
-		spiWriteWord(REG_S3_PORT0, port);
+		spiWriteWord(REG_S3_PORT0, 0, port);
 		// Open Socket
-        	spiWriteReg(REG_S3_CR, CR_OPEN);
-        	while(spiReadReg(REG_S3_CR)) {
+        	spiWriteReg(REG_S3_CR, 0, CR_OPEN);
+        	while(spiReadReg(REG_S3_CR, 0)) {
         		//wait for command to complete	
  		} 
 		// Read Status
-		if(spiReadReg(REG_S3_SR) != SOCK_UDP)
+		if(spiReadReg(REG_S3_SR, 0) != SOCK_UDP)
 			// Close Socket if it wasn't initialized correctly
-			spiWriteReg(REG_S3_CR, CR_CLOSE);
+			spiWriteReg(REG_S3_CR, 0, CR_CLOSE);
 
 
 		// If socket correctly opened continue
-	} while(spiReadReg(REG_S3_SR) != SOCK_UDP);
+	} while(spiReadReg(REG_S3_SR, 0) != SOCK_UDP);
 }
 
 
@@ -100,7 +100,7 @@ static uint8_t processPacket(void)
 	)
 
 	// Read data from chip to buffer
-	readPointer = spiReadWord(REG_S3_RX_RD0);
+	readPointer = spiReadWord(REG_S3_RX_RD0, 0);
 
 	DBG_TFTP_EX(
 		tracePGMlnTftp(mDebugTftp_RPTR);
@@ -118,19 +118,19 @@ static uint8_t processPacket(void)
 			}
 		)
 
-		*bufPtr++ = spiReadReg(readPointer++);
+		*bufPtr++ = spiReadReg(readPointer++, 0);
 
 		if(readPointer == S3_RX_END) readPointer = S3_RX_START;
 	}
 
-	spiWriteWord(REG_S3_RX_RD0, readPointer);     // Write back new pointer
-	spiWriteReg(REG_S3_CR, CR_RECV);
+	spiWriteWord(REG_S3_RX_RD0, 0, readPointer);     // Write back new pointer
+	spiWriteReg(REG_S3_CR, 0, CR_RECV);
 
-	while(spiReadReg(REG_S3_CR));
+	while(spiReadReg(REG_S3_CR, 0));
 
 	DBG_TFTP_EX(
 		tracePGMlnTftp(mDebugTftp_BLEFT);
-		tracenum(spiReadWord(REG_S3_RX_RSR0));
+		tracenum(spiReadWord(REG_S3_RX_RSR0, 0));
 	)
 
 	// Dump packet
@@ -151,7 +151,7 @@ static uint8_t processPacket(void)
 	// Set up return IP address and port
 	uint8_t i;
 
-	for(i = 0; i < 6; i++) spiWriteReg(REG_S3_DIPR0 + i, buffer[i]);
+	for(i = 0; i < 6; i++) spiWriteReg(REG_S3_DIPR0 + i, 0, buffer[i]);
 
 	DBG_TFTP(tracePGMlnTftp(mDebugTftp_RADDR);)
 
@@ -362,7 +362,7 @@ static void sendResponse(uint16_t response)
 	uint8_t packetLength;
 	uint16_t writePointer;
 
-	writePointer = spiReadWord(REG_S3_TX_WR0) + S3_TX_START;
+	writePointer = spiReadWord(REG_S3_TX_WR0, 0) + S3_TX_START;
 
 	switch(response) {
 		default:
@@ -422,15 +422,15 @@ static void sendResponse(uint16_t response)
 	txPtr = txBuffer;
 
 	while(packetLength--) {
-		spiWriteReg(writePointer++, *txPtr++);
+		spiWriteReg(writePointer++, 0, *txPtr++);
 
 		if(writePointer == S3_TX_END) writePointer = S3_TX_START;
 	}
 
-	spiWriteWord(REG_S3_TX_WR0, writePointer - S3_TX_START);
-	spiWriteReg(REG_S3_CR, CR_SEND);
+	spiWriteWord(REG_S3_TX_WR0, 0, writePointer - S3_TX_START);
+	spiWriteReg(REG_S3_CR, 0, CR_SEND);
 
-	while(spiReadReg(REG_S3_CR));
+	while(spiReadReg(REG_S3_CR, 0));
 
 	DBG_TFTP(tracePGMlnTftp(mDebugTftp_RESP);)
 }
@@ -470,7 +470,7 @@ uint8_t tftpPoll(void)
 {
 	uint8_t response = ACK;
 	// Get the size of the recieved data
-	uint16_t packetSize = spiReadWord(REG_S3_RX_RSR0);
+	uint16_t packetSize = spiReadWord(REG_S3_RX_RSR0, 0);
 //	uint16_t packetSize = 0, incSize = 0;
 
 // 	do {
@@ -484,8 +484,8 @@ uint8_t tftpPoll(void)
 	if(packetSize) {
 		tftpFlashing = TRUE;
 
-		while((spiReadReg(REG_S3_IR) & IR_RECV)) {
-			spiWriteReg(REG_S3_IR, IR_RECV);
+		while((spiReadReg(REG_S3_IR, 0) & IR_RECV)) {
+			spiWriteReg(REG_S3_IR, 0, IR_RECV);
 			//FIXME: is this right after all? smaller delay but
 			//still a delay and it still breaks occasionally
 			_delay_ms(TFTP_PACKET_DELAY);
@@ -493,7 +493,7 @@ uint8_t tftpPoll(void)
 
 		// Process Packet and get TFTP response code
 #if (DEBUG_TFTP > 0)
-		packetSize = spiReadWord(REG_S3_RX_RSR0);
+		packetSize = spiReadWord(REG_S3_RX_RSR0, 0);
 		response = processPacket(packetSize);
 #else
 		response = processPacket();
@@ -503,7 +503,7 @@ uint8_t tftpPoll(void)
 	}
 
 	if(response == FINAL_ACK) {
-		spiWriteReg(REG_S3_CR, CR_CLOSE);
+		spiWriteReg(REG_S3_CR, 0, CR_CLOSE);
 		// Complete
 		return(0);
 	}
