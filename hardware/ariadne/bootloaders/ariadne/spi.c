@@ -124,7 +124,7 @@ uint8_t spiReadReg(uint16_t address)
 	SPDR = address & 0xff;
 	while(!(SPSR & _BV(SPIF)));
 	
-	SPDR = 0x69;  //Socket 3 BSB Read 0x68 Selects Socket 3 Register, read mode, 1 byte data length
+	SPDR = 0x69;  //Socket 3 BSB Read 0x69 Selects Socket 3 Register, read mode, 1 byte data length
 	while(!(SPSR & _BV(SPIF)));
 
 #else //Standard W5100 Code
