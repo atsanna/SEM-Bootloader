@@ -344,7 +344,7 @@ Supported ethernet controllers:
 
 * __WizNet W5100__
 * __WizNet W5200__
-* __WizNet W5500__  (Work In Progress)
+* __WizNet W5500__  (Work In Progress / Needs testing)
 
 Tested Arduino Boards:
 
