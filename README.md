@@ -336,10 +336,13 @@ Supported MCUs:
 
 * __ATmega328__
 * __ATmega2560__
+* __Atmega1284P__
 
 Supported ethernet controllers:
 
 * __WizNet W5100__
+* __WizNet W5200__
+* __WizNet W5500__  (Work In Progress)
 
 Tested Arduino Boards:
 
@@ -347,11 +350,12 @@ Tested Arduino Boards:
 * [Arduino Uno][18]
 * [Arduino Duemilanove w/ ATmega328][19]
 * [Arduino Mega 2560][20]
+* [SEM Energy Monitor][21]
 [17]: www.arduino.cc/en/Main/ArduinoBoardEthernet
 [18]: http://www.arduino.cc/en/Main/ArduinoBoardUno
 [19]: http://www.arduino.cc/en/Main/ArduinoBoardDuemilanove
 [20]: http://arduino.cc/en/Main/arduinoBoardMega2560
-
+[20]: http://www.getsem.info
 ## Other Tested Boards
 These boards have been also tested and found to be working with Ariadne Bootloader. I don't have any
 of these so a big ___thank you___ goes to the people that took their time to test them.
