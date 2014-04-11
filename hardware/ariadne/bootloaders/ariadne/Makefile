@@ -288,7 +288,7 @@ atmega328_ethernet_isp: isp
 
 atmega1284: TARGET = atmega1284p
 atmega1284: MCU_TARGET = atmega1284p
-atmega1284: CFLAGS += '-DLED_START_FLASHES=3' '-DBAUD_RATE=115200' '-DBIGBOOT'
+atmega1284: CFLAGS += '-DW5200=1' '-DBAUD_RATE=115200'
 atmega1284: AVR_FREQ = 16000000L
 atmega1284: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
 atmega1284: $(PROGRAM)_atmega1284p.hex
@@ -308,7 +308,7 @@ atmega1284_isp: isp
 
 debug1284: TARGET = debug1284p
 debug1284: MCU_TARGET = atmega1284p
-debug1284: CFLAGS += '-DDEBUG_SPI=2' '-DBAUD_RATE=115200'
+debug1284: CFLAGS += '-DDEBUG_SPI=1' '-DW5200=1' '-DBAUD_RATE=115200'
 debug1284: AVR_FREQ = 16000000L
 debug1284: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
 debug1284: $(PROGRAM)_debug1284p.hex
