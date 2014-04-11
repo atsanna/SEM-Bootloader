@@ -3,7 +3,7 @@
 
 #if (W5200 > 0)
 #include "w5200.h"
-#elif #if (W5500 > 0)
+#elif (W5500 > 0)
 #include "w5500.h"
 #else
 
