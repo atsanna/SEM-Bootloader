@@ -23,8 +23,8 @@ void spiWriteReg(uint16_t address, uint8_t cb, uint8_t value)
 		tracenum(value);
 	)
 
-
-
+	uint8_t temp = cb;
+	
 	SPCR = _BV(SPE) | _BV(MSTR); // Set SPI as master
 	SS_LOW();
 	
@@ -72,12 +72,9 @@ void spiWriteReg(uint16_t address, uint8_t cb, uint8_t value)
 
 	SS_HIGH();
 	SPCR = 0; // Turn off SPI
-	
-
 
 }
 
-}
 void spiWriteWord(uint16_t address, uint8_t cb, uint16_t value)
 {
 	// Write uint16_t to Ethernet controller
@@ -99,7 +96,8 @@ uint8_t spiReadReg(uint16_t address, uint8_t cb)
 
 	SPCR = _BV(SPE) | _BV(MSTR);
 	SS_LOW();
-
+	
+	uint8_t temp = cb;
 
 #if (W5200 > 0)
 
