@@ -17,20 +17,11 @@
 #include "debug.h"
 #include "debug_net.h"
 
-//#define W5100_ETHERNET_SHIELD // Arduino Ethenret Shield and Compatibles ...
-#define W5200_ETHERNET_SHIELD // WIZ820io, W5200 Ethernet Shield 
-//#define W5500_ETHERNET_SHIELD   // WIZ550io, ioShield series of WIZnet
-
-#if defined(W5500_ETHERNET_SHIELD)
-//#define WIZ550io_WITH_MACADDRESS // Use assigned MAC address of WIZ550io
-#include "w5500.c"
-#endif
-
-#if defined(W5200_ETHERNET_SHIELD)
+#if (W5200 > 0)
 #include "w5200.c"
-#endif
-
-#if defined(W5100_ETHERNET_SHIELD)
+#elif #if (W5500 > 0)
+#include "w5500.c"
+#else
 
 
 uint8_t registerBuffer[REGISTER_BLOCK_SIZE] = {
