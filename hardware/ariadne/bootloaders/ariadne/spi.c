@@ -96,8 +96,6 @@ uint8_t spiReadReg(uint16_t address, uint8_t cb)
 
 	SPCR = _BV(SPE) | _BV(MSTR);
 	SS_LOW();
-	
-	uint8_t temp = cb;
 
 #if (W5200 > 0)
 
