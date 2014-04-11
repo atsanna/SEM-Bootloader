@@ -46,7 +46,7 @@ void spiWriteReg(uint16_t address, uint8_t value)
 	while(!(SPSR & _BV(SPIF)));
 
 
-#elif #if (W5500 > 0)
+#elif (W5500 > 0)
 //W5500 code
 
 /*
@@ -117,7 +117,7 @@ uint8_t spiReadReg(uint16_t address)
 	while(!(SPSR & _BV(SPIF)));
 
 
-#elif #if (W5500 > 0)
+#elif (W5500 > 0)
 //W5500 code
 
 /*
