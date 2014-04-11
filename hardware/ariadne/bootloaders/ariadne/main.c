@@ -6,6 +6,8 @@
  * Function: Bootloader core
  * Version: 0.2 support for USB flashing
  */
+#define W5200 0
+#define W5500 0
 
 #include <avr/eeprom.h>
 #include <avr/boot.h>
