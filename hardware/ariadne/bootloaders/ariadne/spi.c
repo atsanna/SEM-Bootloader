@@ -23,11 +23,12 @@ void spiWriteReg(uint16_t address, uint8_t value)
 		tracenum(value);
 	)
 
+
+
 	SPCR = _BV(SPE) | _BV(MSTR); // Set SPI as master
 	SS_LOW();
-
-	//SPDR = SPI_WRITE;
-	//while(!(SPSR & _BV(SPIF)));
+	
+#if (W5200 > 0)
 
 	SPDR = address >> 8;
 	while(!(SPSR & _BV(SPIF)));
@@ -44,8 +45,38 @@ void spiWriteReg(uint16_t address, uint8_t value)
 	SPDR = value;
 	while(!(SPSR & _BV(SPIF)));
 
+
+#elif #if (W5500 > 0)
+//W5500 code
+
+/*
+    SPI.transfer(_addr >> 8);
+    SPI.transfer(_addr & 0xFF);
+    SPI.transfer(_cb);
+    SPI.transfer(_data);
+*/
+
+#else //Standard W5100 Code
+
+	SPDR = SPI_WRITE;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = address >> 8;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = address & 0xff;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = value;
+	while(!(SPSR & _BV(SPIF)));
+
+#endif
+
 	SS_HIGH();
 	SPCR = 0; // Turn off SPI
+	
+
+
 }
 
 void spiWriteWord(uint16_t address, uint16_t value)
@@ -70,6 +101,34 @@ uint8_t spiReadReg(uint16_t address)
 	SPCR = _BV(SPE) | _BV(MSTR);
 	SS_LOW();
 
+
+#if (W5200 > 0)
+
+	SPDR = address >> 8;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = address & 0xff;
+	while(!(SPSR & _BV(SPIF)));
+	
+	SPDR = 0x00;
+	while(!(SPSR & _BV(SPIF)));
+	
+	SPDR = 0x01;
+	while(!(SPSR & _BV(SPIF)));
+
+
+#elif #if (W5500 > 0)
+//W5500 code
+
+/*
+    SPI.transfer(_addr >> 8);
+    SPI.transfer(_addr & 0xFF);
+    SPI.transfer(_cb);
+    uint8_t _data = SPI.transfer(0);
+*/
+
+#else //Standard W5100 Code
+
 	SPDR = SPI_READ;
 	while(!(SPSR & _BV(SPIF)));
 
@@ -82,10 +141,14 @@ uint8_t spiReadReg(uint16_t address)
 	SPDR = 0;
 	while(!(SPSR & _BV(SPIF)));
 
+#endif
+
 	SS_HIGH();
 	returnValue = SPDR;
 	SPCR = 0;
-	
+
+
+
 	DBG_SPI_EX(
 		tracePGM(mDebugSpi_COMMA);
 		tracenum(returnValue);
