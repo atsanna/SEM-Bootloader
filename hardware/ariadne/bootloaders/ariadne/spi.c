@@ -23,13 +23,12 @@ void spiWriteReg(uint16_t address, uint8_t cb, uint8_t value)
 		tracenum(value);
 	)
 
-	uint8_t temp = cb;
 	
 	SPCR = _BV(SPE) | _BV(MSTR); // Set SPI as master
 	SS_LOW();
 	
 #if (W5200 > 0)
-
+	
 	SPDR = address >> 8;
 	while(!(SPSR & _BV(SPIF)));
 
@@ -72,7 +71,8 @@ void spiWriteReg(uint16_t address, uint8_t cb, uint8_t value)
 
 	SS_HIGH();
 	SPCR = 0; // Turn off SPI
-
+	
+	cb = 0; //prevents compiler whining about unused cb variable
 }
 
 void spiWriteWord(uint16_t address, uint8_t cb, uint16_t value)
@@ -153,6 +153,8 @@ uint8_t spiReadReg(uint16_t address, uint8_t cb)
 		tracenum(returnValue);
 	)
 	return(returnValue);
+	
+	cb = 0; //prevents compiler whining about unused cb variable
 }
 
 uint16_t spiReadWord(uint16_t address, uint8_t cb)
