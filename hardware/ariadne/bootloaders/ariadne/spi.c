@@ -51,9 +51,8 @@ void spiWriteReg(uint16_t address, uint8_t value)
 	SPDR = address & 0xff;
 	while(!(SPSR & _BV(SPIF)));
 	
-	SPDR = 0x4C;  //Socket 3
+	SPDR = 0x6D;  //Socket 3 BSB Write 0x6D Selects Socket 3 Register, write mode, 1 byte data length
 	while(!(SPSR & _BV(SPIF)));
-
 
 #else //Standard W5100 Code
 
@@ -119,12 +118,14 @@ uint8_t spiReadReg(uint16_t address)
 #elif (W5500 > 0)
 //W5500 code
 
-/*
-    SPI.transfer(_addr >> 8);
-    SPI.transfer(_addr & 0xFF);
-    SPI.transfer(0x48); //cntl_byte = (0x40)+0x08; 0x40 (socket 3)
-    uint8_t _data = SPI.transfer(0);
-*/
+	SPDR = address >> 8;
+	while(!(SPSR & _BV(SPIF)));
+
+	SPDR = address & 0xff;
+	while(!(SPSR & _BV(SPIF)));
+	
+	SPDR = 0x69;  //Socket 3 BSB Read 0x68 Selects Socket 3 Register, read mode, 1 byte data length
+	while(!(SPSR & _BV(SPIF)));
 
 #else //Standard W5100 Code
 
@@ -137,10 +138,10 @@ uint8_t spiReadReg(uint16_t address)
 	SPDR = address & 0xff;
 	while(!(SPSR & _BV(SPIF)));
 
+#endif
+
 	SPDR = 0;
 	while(!(SPSR & _BV(SPIF)));
-
-#endif
 
 	SS_HIGH();
 	returnValue = SPDR;
