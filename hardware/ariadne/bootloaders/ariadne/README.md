@@ -1,5 +1,5 @@
 Ethernet/TFTP Bootloader for the ATmega328P/Atmeage2560/Atmeage1280/Atmega1284P
-/w Support for Wiznet5100, Wiznet5200 and (WIP) Wiznet5500
+Support for Wiznet5100, Wiznet5200 and (WIP) Wiznet5500
 ==============================================
 
 Flashing bootloader:
@@ -21,8 +21,8 @@ Configuring your network:
 The bootloader's' default address is 192.168.84.128. Configure your computer
 network card to a static address of 192.168.84.x with a subnet of 255.255.255.0.
 By default, the bootloader assumes an internet gateway is at address
-192.168.84.1. The default network settings can be changed at the top of the
-"net.h" file.
+192.168.84.1. The default network settings can be changed at the bottom of the
+"w5x00.h" file.
 
 The bootloader listens to port 69 for incoming connections and switches to
 port 46969 for the transfers. So if you need to flash remotely, outside your
@@ -47,8 +47,8 @@ command.
 Uploading firmware manually:
 ----------------------------
 1.  Check the target board is powered, and connected to the computer ethernet.
-2.  Verify the computer network settings: Static IP of 192.168.1.1, Subnet of 255.255.255.0.
-3.  In a console window: tftp 192.168.1.250
+2.  Verify the computer network settings: Static IP of 192.168.84.x, Subnet of 255.255.255.0.
+3.  In a console window: tftp 192.168.84.128
 4.  At the tftp> prompt: Make sure the tftp client is in octet mode using the
     mode octet" command. Here you can also put the "trace" and "verbose" commands
     for some more output.
@@ -81,3 +81,4 @@ Version history
 ---------------
 * 0.1: First internal release by the Arduino project. Supports uploads on tftp.
 * 0.2: Tftp upload fixed and working. More debugging support
+* 0.6: Implemented 1284P and W5200 support
