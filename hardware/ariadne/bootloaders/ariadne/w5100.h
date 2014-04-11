@@ -1,20 +1,11 @@
 #ifndef w5100_h
 #define w5100_h
 
-//#define W5100_ETHERNET_SHIELD // Arduino Ethenret Shield and Compatibles ...
-#define W5200_ETHERNET_SHIELD // WIZ820io, W5200 Ethernet Shield 
-//#define W5500_ETHERNET_SHIELD   // WIZ550io, ioShield series of WIZnet
-
-#if defined(W5500_ETHERNET_SHIELD)
-//#define WIZ550io_WITH_MACADDRESS // Use assigned MAC address of WIZ550io
-#include "w5500.h"
-#endif
-
-#if defined(W5200_ETHERNET_SHIELD)
+#if (W5200 > 0)
 #include "w5200.h"
-#endif
-
-#if defined(W5100_ETHERNET_SHIELD)
+#elif #if (W5500 > 0)
+#include "w5500.h"
+#else
 
 //Mode
 #define REG_MR          0x000
@@ -307,4 +298,3 @@ void netInit(void);
 
 #endif
 
-#endif
