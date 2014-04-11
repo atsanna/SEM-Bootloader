@@ -3,9 +3,8 @@
 
 ### TFTP Bootloader for ATmega328P/Atmega2560/ATmega1280/Atmega1284P ###
 
-### /w support for Wiznet5100, W5200 and W5500 ###
+#### /w support for Wiznet5100, W5200 and W5500 ####
 
-## Bootloader for Arduino (and variants) with Ethernet
 This is a beta stage bootloader for Arduino Ethernet board and the regular Arduino with Ethernet Shield.
 It is based on previous unfinished work by the Arduino developers. The bootloader implements a TFTP
 server on the Arduino board and flashing works using any regular TFTP client.
