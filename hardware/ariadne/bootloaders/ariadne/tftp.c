@@ -9,13 +9,21 @@
  
 /*W5500 SPI OP Codes*/
 
-//Socket Read:
+//Socket Read BSB:
 #define S2_R_CB 0x48
 #define S3_R_CB 0x68
 
-//Socket Write:
+//Socket Write BSB:
 #define S2_W_CB 0x4C
 #define S3_W_CB 0x6C
+
+//Socket RXbuf BSB:
+#define S2_RXBUF_CB 0x58
+#define S3_RXBUF_CB 0x78
+
+//Socket TXbuf BSB:
+#define S2_TXBUF_CB 0x54
+#define S3_TXBUF_CB 0x74
 
 /*end W5500 SPI OP Codes*/
 
@@ -119,7 +127,15 @@ static uint8_t processPacket(void)
 		tracenum(readPointer);
 	)
 
+#if (W5500 > 0)
+
+	if(readPointer == 0) readPointer = 0x0000;
+
+#else
+
 	if(readPointer == 0) readPointer += S3_RX_START;
+
+#endif
 
 	for(count = TFTP_PACKET_MAX_SIZE; count--;) {
 
@@ -130,9 +146,18 @@ static uint8_t processPacket(void)
 			}
 		)
 
-		*bufPtr++ = spiReadReg(readPointer++, S3_R_CB);
+#if (W5500 > 0)
+
+		*bufPtr++ = spiReadReg(readPointer++, S3_RXBUF_CB);
+
+		if(readPointer == 0x0800) readPointer = 0x0000;
+#else
+
+		*bufPtr++ = spiReadReg(readPointer++, 0);
 
 		if(readPointer == S3_RX_END) readPointer = S3_RX_START;
+#endif
+
 	}
 
 	spiWriteWord(REG_S3_RX_RD0, S3_W_CB, readPointer);     // Write back new pointer
@@ -373,8 +398,13 @@ static void sendResponse(uint16_t response)
 	uint8_t* txPtr = txBuffer;
 	uint8_t packetLength;
 	uint16_t writePointer;
+	
+#if (W5500 > 0)
+	writePointer = spiReadWord(REG_S3_TX_WR0, S3_R_CB);
+#else
+	writePointer = spiReadWord(REG_S3_TX_WR0, 0) + S3_TX_START;
+#endif
 
-	writePointer = spiReadWord(REG_S3_TX_WR0, S3_R_CB) + S3_TX_START;
 
 	switch(response) {
 		default:
@@ -434,12 +464,19 @@ static void sendResponse(uint16_t response)
 	txPtr = txBuffer;
 
 	while(packetLength--) {
-		spiWriteReg(writePointer++, S3_W_CB, *txPtr++);
+		spiWriteReg(writePointer++, S3_TXBUF_CB, *txPtr++);
+#if (W5500 > 0)
+		if(writePointer == 0x0800) writePointer = 0x0000;
+	}
 
+	spiWriteWord(REG_S3_TX_WR0, S3_W_CB, writePointer);
+#else
 		if(writePointer == S3_TX_END) writePointer = S3_TX_START;
 	}
 
 	spiWriteWord(REG_S3_TX_WR0, S3_W_CB, writePointer - S3_TX_START);
+#endif
+
 	spiWriteReg(REG_S3_CR, S3_W_CB, CR_SEND);
 
 	while(spiReadReg(REG_S3_CR, S3_R_CB));
