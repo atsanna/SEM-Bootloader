@@ -42,5 +42,6 @@
 void updateLed(void);
 void resetTick(void);
 uint8_t timedOut(void);
+void appStart(void);
 
 #endif
