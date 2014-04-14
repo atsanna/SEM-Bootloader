@@ -60,3 +60,10 @@ uint8_t timedOut(void)
 	if(tick > TIMEOUT) return(1);
 	else return(0);
 }
+void appStart(void) {
+	__asm__ __volatile__ (
+		"clr	r30		\n\t"
+		"clr	r31		\n\t"
+		"ijmp	\n\t"
+	);
+}
