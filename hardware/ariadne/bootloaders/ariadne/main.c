@@ -33,11 +33,13 @@ int main(void)
 {
 	/* Disable the watchdog timer to prevent
 	 * eternal reset loop of doom and despair */
+	uint8_t ch = MCUSR;
 	MCUSR = 0;
 	wdt_disable();
+	if (!(ch & _BV(EXTRF))) appStart(); //if not external (hard reset) skip bootloader
 
 	// Wait to ensure startup of W5100
-	_delay_ms(200);
+	_delay_ms(300);
 
 	/* This code makes the following assumptions:
 	 * No interrupts will execute
@@ -134,13 +136,7 @@ int main(void)
 	}
 
 	/* Exit to user application */
-	DBG_MAIN(tracePGMlnMain(mDebugMain_EXIT);)
-	asm volatile(
-		"clr	r30		\n\t"
-		"clr	r31		\n\t"
-		"ijmp	\n\t"
-	);
-	//appStart();
+	appStart();
 	//return(0); /* never reached */
 }
 
