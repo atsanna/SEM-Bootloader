@@ -1,6 +1,6 @@
 __THIS FILE IS A COMPILATION OF NOTES THAT MIGHT PROVE USEFUL IN THE FUTURE__
 
-* NOTE: CHECK VALIDATIONS IN TFTP AGAIN!
+* NOTE: CHECK VALIDATIONS IN TFTP AGAIN!!!!!!!!!! YOU FUCKING MORON!
 
 * NOTE: We could support instant booting if there was a watchdog reset by checking for that. That way reset is instant but reprogram waits.
 
