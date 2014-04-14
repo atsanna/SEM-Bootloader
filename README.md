@@ -1,5 +1,5 @@
-# [SEM Bootloader for Arduino][1]
-[1]: http://github.com/arjenhiemstra/SEM-Bootloader/
+# [Ariadne Bootloader for Arduino][1]
+[1]: http://codebendercc.github.com/Ariadne-Bootloader/
 
 ### TFTP Bootloader for ATmega328P/Atmega2560/ATmega1280/Atmega1284P ###
 
