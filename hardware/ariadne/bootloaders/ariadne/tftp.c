@@ -150,7 +150,7 @@ static uint8_t processPacket(void)
 
 		*bufPtr++ = spiReadReg(readPointer++, S3_RXBUF_CB);
 
-		if(readPointer == 0x0800) readPointer = 0x0000;
+		if(readPointer == 0xFFFF) readPointer = 0x0000; //needs testing
 #else
 
 		*bufPtr++ = spiReadReg(readPointer++, 0);
@@ -470,7 +470,7 @@ static void sendResponse(uint16_t response)
 	while(packetLength--) {
 		spiWriteReg(writePointer++, S3_TXBUF_CB, *txPtr++);
 #if (W5500 > 0)
-		if(writePointer == 0x0800) writePointer = 0x0000;
+		if(writePointer == 0xFFFF) writePointer = 0x0000;  //needs testing
 	}
 
 	spiWriteWord(REG_S3_TX_WR0, S3_W_CB, writePointer);
