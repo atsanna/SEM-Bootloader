@@ -154,8 +154,12 @@ static uint8_t processPacket(void)
 #else
 
 		*bufPtr++ = spiReadReg(readPointer++, 0);
-
+//
+//#define S3_RX_START 0x7800
+//#define S3_RX_END   0x8000
+//
 		if(readPointer == S3_RX_END) readPointer = S3_RX_START;
+
 #endif
 
 	}
