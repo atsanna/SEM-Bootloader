@@ -150,14 +150,11 @@ static uint8_t processPacket(void)
 
 		*bufPtr++ = spiReadReg(readPointer++, S3_RXBUF_CB);
 
-		if(readPointer == 0xFFFF) readPointer = 0x0000; //needs testing
+		if(readPointer == 0xFFFF) readPointer = 0x0000; //changed 0c0800 to 0xFFFF, fixes a 4th packet retransmit bug. upload speed changed from 500sec to 90sec for 100kb program
 #else
 
 		*bufPtr++ = spiReadReg(readPointer++, 0);
-//
-//#define S3_RX_START 0x7800
-//#define S3_RX_END   0x8000
-//
+
 		if(readPointer == S3_RX_END) readPointer = S3_RX_START;
 
 #endif
@@ -470,7 +467,7 @@ static void sendResponse(uint16_t response)
 	while(packetLength--) {
 		spiWriteReg(writePointer++, S3_TXBUF_CB, *txPtr++);
 #if (W5500 > 0)
-		if(writePointer == 0xFFFF) writePointer = 0x0000;  //needs testing
+		if(writePointer == 0xFFFF) writePointer = 0x0000;  //changed 0c0800 to 0xFFFF, fixes a 4th packet retransmit bug. upload speed changed from 500sec to 90sec for 100kb program
 	}
 
 	spiWriteWord(REG_S3_TX_WR0, S3_W_CB, writePointer);
