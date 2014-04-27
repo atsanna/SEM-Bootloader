@@ -1,7 +1,7 @@
-# [Ariadne Bootloader for Arduino][1]
-[1]: http://codebendercc.github.com/Ariadne-Bootloader/
+# [SEM Bootloader for Arduino][1]
+[1]: http://github.com/arjenhiemstra/SEM-Bootloader/
 
-### TFTP Bootloader for ATmega328P/Atmega2560/ATmega1280/Atmega1284P ###
+### TFTP Bootloader for ATmega328P/Atmega2560/Atmega1284P ###
 
 #### /w support for Wiznet5100, W5200 and W5500 ####
 
@@ -22,9 +22,9 @@ simply copy the folders in your sketchbook and be ready
 
 ## Downloading and Installing Files
 First of all, you need to clone or download the repository. To clone the repository you need to have
-git installed, then you can run `git clone https://github.com/codebendercc/Ariadne-Bootloader.git` in a
+git installed, then you can run `git clone https://github.com/arjenhiemstra/SEM-Bootloader.git` in a
 directory. This way you can later update your local repository by running `git pull` inside the
-__Ariadne-Bootloader__ directory.
+__SEM-Bootloader__ directory.
 
 In case you want to avoid this hassle, you can use the __ZIP__ button at the top of the page to download
 the latest snapshot of the repository in a zip archive and extract it.
@@ -46,9 +46,9 @@ should consult the above link for further instructions on how to build and use.
 [5]: http://arduino.cc/en/Tutorial/ArduinoISP
 
 After you have connected the Arduino board and the programmer to your computer launch the Arduino IDE.
-Navigate to the __Tools__ > __Board__ menu and select `Arduino Duemilanove/Uno(ATmega328) w/ Ariadne Bootloader`
-if you have an Arduino Duemilanove or Uno with an Ethernet Shield or `Arduino Ethernet w/ Ariadne Bootloader`
-for Arduino Ethernet. Then go to __Tools__ > __Programmer__ and select the programmer you are using.
+Navigate to the __Tools__ > __Board__ menu and select `SEMboot Atmega <chip> (<Wiznet Chip>)` which
+reflects your Arduino/Atmega board and wiznet chip combination.
+Then go to __Tools__ > __Programmer__ and select the programmer you are using.
 In case you are using _ArduinoISP_, make sure that the selected port in the __Tools__ > __Serial Port__
 menu refers to the _ArduinoISP_ and not the board that you want to burn the bootloader on. Now, just
 launch the __Tools__ > __Burn Bootloader__ command and wait for about 15 seconds for the operation
@@ -167,7 +167,7 @@ you have to run one of the following commands in a terminal.
 
 In Windows and MacOS you can find the `avr-objcopy` program in your Arduino IDE installation folder under
 `hardware/tools/avr/bin/`. Or,if you have scons installed, you can use the modified `SConstruct` script
-you can find in `Ariadne-Bootloader/utilities`. This being based on the *arscons* script, it can be used
+you can find in `SEM-Bootloader/utilities`. This being based on the *arscons* script, it can be used
 in two ways. If you used the previous process to generate the _HEX_ file you can just copy the `SConstruct`
 file inside the temporary *Arduino IDE* build directory (as mentioned above) and run `scons` in a terminal
 inside that directory.
@@ -178,7 +178,7 @@ IDE* creating the `.bin` file in the process. Note that this way the sketch's fo
 with Arduino's build files, much like the temporary directory *Arduino IDE* uses.
 
 For testing purposes you can find a __blink__ sketch in binary form inside the
-`Ariadne-Bootloader/utilities/tests/blink` folder. The __fade__ sketch in the `tests/fade` folder
+`SEM-Bootloader/utilities/tests/blink` folder. The __fade__ sketch in the `tests/fade` folder
 will also give you a view of what a failed upload looks like. This sketch fails because it is written
 in plain __C__ and not in __Arduino__. That way it lacks some "signatures" the bootloader uses to
 validate _Arduino_ sketches. The third sketch in `tests/led_display` is an easter egg for which you
@@ -329,9 +329,9 @@ enter your Arduino's IP (external IP for those in corporate or home networks beh
 * [NetEEPROM][15] (Library to manipulate the network settings of the bootloader)
 * [ResetServer][16] (Library used to create an HTTP server on the Arduino to enable remote resetting
 of the microcontroller)
-[14]: https://github.com/codebendercc/Ariadne-Bootloader/tree/mega/libraries/NewEEPROM
-[15]: https://github.com/codebendercc/Ariadne-Bootloader/tree/mega/libraries/NetEEPROM
-[16]: https://github.com/codebendercc/Ariadne-Bootloader/tree/mega/libraries/EthernetReset
+[14]: https://github.com/arjenhiemstra/SEM-Bootloader/tree/mega/libraries/libraries/NewEEPROM
+[15]: https://github.com/arjenhiemstra/SEM-Bootloader/tree/mega/libraries/libraries/NetEEPROM
+[16]: https://github.com/arjenhiemstra/SEM-Bootloader/tree/mega/libraries/libraries/EthernetReset
 
 ## Supported Boards
 Supported MCUs:
@@ -383,12 +383,12 @@ bootloader has been stabilized.
 
 
 ## Acknoledgements
-__Ariadne__ bootloader is built upon some great open source projects.
+__SEM-Bootloader__ bootloader is built upon some great open source projects.
 
-* [TFTP-Bootloader][23] (The base of this project)
+* [Ariadne Bootloader][23] (The base of this project)
 * [Optiboot][24] (Serial flashing for __ATmega328__)
 * [Arduino-stk500v2-bootloader][25] (Serial flashing for __ATmega2560__)
-[23]: https://github.com/arduino/TFTP-Bootloader
+[23]: https://github.com/codebendercc/Ariadne-Bootloader
 [24]: https://code.google.com/p/optiboot/
 [25]: https://github.com/msproul/Arduino-stk500v2-bootloader
 
