@@ -21,7 +21,7 @@
 # etc...
 
 # program name should not be changed...
-PROGRAM    = ariadne
+PROGRAM    = semboot
 
 # The default behavior is to build using tools that are in the users
 # current path variables, but we can also build using an installed
