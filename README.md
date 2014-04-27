@@ -344,7 +344,7 @@ Supported ethernet controllers:
 
 * __WizNet W5100__
 * __WizNet W5200__
-* __WizNet W5500__  (Works but needs some fixing (every 4th TFTP packet retransmits))
+* __WizNet W5500__
 
 Tested Arduino Boards:
 
