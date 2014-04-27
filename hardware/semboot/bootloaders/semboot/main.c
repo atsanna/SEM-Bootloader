@@ -36,7 +36,6 @@ int main(void)
 	uint8_t ch = MCUSR;
 	MCUSR = 0;
 	wdt_disable();
-	if (!(ch & _BV(EXTRF))) appStart(); //if not external (hard reset) skip bootloader
 
 	// Wait to ensure startup of W5100
 	_delay_ms(300);
@@ -66,6 +65,15 @@ int main(void)
 		eeprom_write_byte(EEPROM_MAJVER, ARIADNE_MAJVER);
 	if(eeprom_read_byte(EEPROM_MINVER) != ARIADNE_MINVER)
 		eeprom_write_byte(EEPROM_MINVER, ARIADNE_MINVER);
+
+	uint8_t updateFlag = 0;
+ 	if(eeprom_read_byte(EEPROM_UPDATE_FLAG) == 1) { //If the update flag was set, no timeout will occur
+ 		updateFlag = 1;
+ 		eeprom_write_byte(EEPROM_UPDATE_FLAG, 0);//Reset update flag so that next reboot normal boot continues
+ 	}
+ 	else if(eeprom_read_byte(EEPROM_UPDATE_FLAG) == 2 || !(ch & _BV(EXTRF))) { //Updating disabled || if not external (hard reset) skip bootloader
+ 		appStart();
+ 	}
 
 	//Initialize UART communication
 	serialInit();
@@ -106,17 +114,17 @@ int main(void)
 				break;
 
 		// If there is no tftp flashing, poll serial
-		if(!tftpFlashing)
+		//if(!tftpFlashing)
 			// If flashing is done exit
-			if(serialPoll() == 0)
-				break;
+		//	if(serialPoll() == 0)
+		//		break;
 
 		/* As explained above this goes out */
 #if defined(ANNOUNCE)
 		announcePoll();
 #endif
 
-		if(timedOut()) {
+		if((timedOut()) && !(updateFlag == 1)) {
 			if(eeprom_read_byte(EEPROM_IMG_STAT) == EEPROM_IMG_OK_VALUE) break;
 
 			//TODO: determine the conditions for reseting server OR reseting socket
@@ -136,7 +144,10 @@ int main(void)
 	}
 
 	/* Exit to user application */
-	appStart();
+	WDTCSR = _BV(WDCE) | _BV(WDE);
+ 	WDTCSR = _BV(WDP2) | _BV(WDE); //Enable watchdog timeout 125ms
+ 	while(1); 	//endless loop, this triggers a reset needed to properly reset the Wiznet chip
+ 			//The bootloader recognizes the watchdog reset and skips to the user application
 	//return(0); /* never reached */
 }
 
