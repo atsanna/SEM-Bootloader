@@ -285,16 +285,16 @@ atmega328_ethernet_isp: HFUSE = D8
 atmega328_ethernet_isp: EFUSE = 05
 atmega328_ethernet_isp: isp
 
-atmega1284_w5100: TARGET = atmega1284p
+atmega1284_w5100: TARGET = atmega1284_w5100
 atmega1284_w5100: MCU_TARGET = atmega1284p
 atmega1284_w5100: CFLAGS += '-DBAUD_RATE=115200'
 atmega1284_w5100: AVR_FREQ = 16000000L
 atmega1284_w5100: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
-atmega1284_w5100: $(PROGRAM)_atmega1284p.hex
-atmega1284_w5100: $(PROGRAM)_atmega1284p.lst
+atmega1284_w5100: $(PROGRAM)_atmega1284_w5100.hex
+atmega1284_w5100: $(PROGRAM)_atmega1284_w5100.lst
 
-atmega1284_w5100_isp: atmega1284
-atmega1284_w5100_isp: TARGET = atmega1284p
+atmega1284_w5100_isp: atmega1284_w5100
+atmega1284_w5100_isp: TARGET = atmega1284_w5100
 atmega1284_w5100_isp: MCU_TARGET = atmega1284p
 # 4096 word boot
 atmega1284_w5100_isp: HFUSE = D8
@@ -304,16 +304,16 @@ atmega1284_w5100_isp: LFUSE = FF
 atmega1284_w5100_isp: EFUSE = FD
 atmega1284_w5100_isp: isp
 
-atmega1284_w5200: TARGET = atmega1284p
+atmega1284_w5200: TARGET = atmega1284_w5200
 atmega1284_w5200: MCU_TARGET = atmega1284p
 atmega1284_w5200: CFLAGS += '-DW5200=1' '-DBAUD_RATE=115200'
 atmega1284_w5200: AVR_FREQ = 16000000L
 atmega1284_w5200: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
-atmega1284_w5200: $(PROGRAM)_atmega1284p.hex
-atmega1284_w5200: $(PROGRAM)_atmega1284p.lst
+atmega1284_w5200: $(PROGRAM)_atmega1284_w5200.hex
+atmega1284_w5200: $(PROGRAM)_atmega1284_w5200.lst
 
-atmega1284_w5200_isp: atmega1284
-atmega1284_w5200_isp: TARGET = atmega1284p
+atmega1284_w5200_isp: atmega1284_w5200
+atmega1284_w5200_isp: TARGET = atmega1284_w5200
 atmega1284_w5200_isp: MCU_TARGET = atmega1284p
 # 4096 word boot
 atmega1284_w5200_isp: HFUSE = D8
@@ -325,16 +325,16 @@ atmega1284_w5200_isp: isp
 
 
 
-atmega1284_w5500: TARGET = atmega1284p
+atmega1284_w5500: TARGET = atmega1284_w5500
 atmega1284_w5500: MCU_TARGET = atmega1284p
 atmega1284_w5500: CFLAGS += '-DW5500=1' '-DBAUD_RATE=115200'
 atmega1284_w5500: AVR_FREQ = 16000000L
 atmega1284_w5500: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
-atmega1284_w5500: $(PROGRAM)_atmega1284p.hex
-atmega1284_w5500: $(PROGRAM)_atmega1284p.lst
+atmega1284_w5500: $(PROGRAM)_atmega1284_w5500.hex
+atmega1284_w5500: $(PROGRAM)_atmega1284_w5500.lst
 
-atmega1284_w5500_isp: atmega1284
-atmega1284_w5500_isp: TARGET = atmega1284p
+atmega1284_w5500_isp: atmega1284_w5500
+atmega1284_w5500_isp: TARGET = atmega1284_w5500
 atmega1284_w5500_isp: MCU_TARGET = atmega1284p
 # 4096 word boot
 atmega1284_w5500_isp: HFUSE = D8
@@ -345,16 +345,16 @@ atmega1284_w5500_isp: EFUSE = FD
 atmega1284_w5500_isp: isp
 
 
-debug1284_w5100: TARGET = debug1284p
+debug1284_w5100: TARGET = debug1284_w5100
 debug1284_w5100: MCU_TARGET = atmega1284p
 debug1284_w5100: CFLAGS += '-DDEBUG_TFTP=1' '-DBAUD_RATE=115200'
 debug1284_w5100: AVR_FREQ = 16000000L
 debug1284_w5100: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
-debug1284_w5100: $(PROGRAM)_debug1284p.hex
-debug1284_w5100: $(PROGRAM)_debug1284p.lst
+debug1284_w5100: $(PROGRAM)_debug1284_w5100.hex
+debug1284_w5100: $(PROGRAM)_debug1284_w5100.lst
 
-debug1284_w5100_isp: debug1284
-debug1284_w5100_isp: TARGET = debug1284p
+debug1284_w5100_isp: debug1284_w5100
+debug1284_w5100_isp: TARGET = debug1284_w5100
 debug1284_w5100_isp: MCU_TARGET = atmega1284p
 # 4096 word boot
 debug1284_w5100_isp: HFUSE = D8
