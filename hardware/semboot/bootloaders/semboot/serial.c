@@ -93,9 +93,9 @@ uint8_t serialPoll(void)
 		resetTick();
 		serialFlashing = TRUE;
 #if defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega1284P__)
-		return(processOptiboot());
+//		return(processOptiboot());
 #elif defined(__AVR_ATmega2560__)
-		return(processStk500boot());
+//		return(processStk500boot());
 #endif
 	}
 	return(1);
