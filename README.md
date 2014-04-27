@@ -5,7 +5,7 @@
 
 #### /w support for Wiznet5100, W5200 and W5500 ####
 
-####This branch is for use in conjunction with SEM firmware#### 
+####This branch is for use in conjunction with SEM firmware####
 
 This is a beta stage bootloader for Arduino Ethernet board and the regular Arduino with Ethernet Shield.
 It is based on previous unfinished work by the Arduino developers. The bootloader implements a TFTP
