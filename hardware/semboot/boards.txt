@@ -1,232 +1,232 @@
 ##############################################################
 
-ariadne328D.name=Arduino Duemilanove /w ATmega328 (Ariadne Bootloader)
+semboot328D.name=Arduino Duemilanove /w ATmega328 (Semboot Bootloader)
 
-ariadne328D.upload.protocol=arduino
-ariadne328D.upload.maximum_size=28672
-ariadne328D.upload.speed=115200
+semboot328D.upload.protocol=arduino
+semboot328D.upload.maximum_size=28672
+semboot328D.upload.speed=115200
 
-ariadne328D.bootloader.low_fuses=0xFF
-ariadne328D.bootloader.high_fuses=0xD8
-ariadne328D.bootloader.extended_fuses=0x05
-ariadne328D.bootloader.path=ariadne
-ariadne328D.bootloader.file=ariadne_atmega328.hex
-ariadne328D.bootloader.unlock_bits=0x3F
-ariadne328D.bootloader.lock_bits=0x0F
+semboot328D.bootloader.low_fuses=0xFF
+semboot328D.bootloader.high_fuses=0xD8
+semboot328D.bootloader.extended_fuses=0x05
+semboot328D.bootloader.path=semboot
+semboot328D.bootloader.file=semboot_atmega328.hex
+semboot328D.bootloader.unlock_bits=0x3F
+semboot328D.bootloader.lock_bits=0x0F
 
-ariadne328D.build.mcu=atmega328p
-ariadne328D.build.f_cpu=16000000L
-ariadne328D.build.core=arduino:arduino
-ariadne328D.build.variant=arduino:standard
-
-##############################################################
-
-ariadne328U.name=Arduino Uno (Ariadne Bootloader)
-
-ariadne328U.upload.protocol=arduino
-ariadne328U.upload.maximum_size=28672
-ariadne328U.upload.speed=115200
-
-ariadne328U.bootloader.low_fuses=0xFF
-ariadne328U.bootloader.high_fuses=0xD8
-ariadne328U.bootloader.extended_fuses=0x05
-ariadne328U.bootloader.path=ariadne
-ariadne328U.bootloader.file=ariadne_atmega328.hex
-ariadne328U.bootloader.unlock_bits=0x3F
-ariadne328U.bootloader.lock_bits=0x0F
-
-ariadne328U.build.mcu=atmega328p
-ariadne328U.build.f_cpu=16000000L
-ariadne328U.build.core=arduino:arduino
-ariadne328U.build.variant=arduino:standard
+semboot328D.build.mcu=atmega328p
+semboot328D.build.f_cpu=16000000L
+semboot328D.build.core=arduino:arduino
+semboot328D.build.variant=arduino:standard
 
 ##############################################################
 
-ariadne328E.name=Arduino Ethernet (Ariadne Bootloader)
+semboot328U.name=Arduino Uno (Semboot Bootloader)
 
-ariadne328E.upload.protocol=arduino
-ariadne328E.upload.maximum_size=28672
-ariadne328E.upload.speed=115200
+semboot328U.upload.protocol=arduino
+semboot328U.upload.maximum_size=28672
+semboot328U.upload.speed=115200
 
-ariadne328E.bootloader.low_fuses=0xFF
-ariadne328E.bootloader.high_fuses=0xD8
-ariadne328E.bootloader.extended_fuses=0x05
-ariadne328E.bootloader.path=ariadne
-ariadne328E.bootloader.file=ariadne_atmega328_ethernet.hex
-ariadne328E.bootloader.unlock_bits=0x3F
-ariadne328E.bootloader.lock_bits=0x0F
+semboot328U.bootloader.low_fuses=0xFF
+semboot328U.bootloader.high_fuses=0xD8
+semboot328U.bootloader.extended_fuses=0x05
+semboot328U.bootloader.path=semboot
+semboot328U.bootloader.file=semboot_atmega328.hex
+semboot328U.bootloader.unlock_bits=0x3F
+semboot328U.bootloader.lock_bits=0x0F
 
-ariadne328E.build.mcu=atmega328p
-ariadne328E.build.f_cpu=16000000L
-ariadne328E.build.core=arduino:arduino
-ariadne328E.build.variant=arduino:standard
-
-##############################################################
-
-ariadne1280M.name=Arduino Mega 1280 (Ariadne Bootloader)
-
-ariadne1280M.upload.protocol=arduino
-ariadne1280M.upload.maximum_size=126976
-ariadne1280M.upload.speed=57600
-
-ariadne1280M.bootloader.low_fuses=0xFF
-ariadne1280M.bootloader.high_fuses=0xDA
-ariadne1280M.bootloader.extended_fuses=0xF5
-ariadne1280M.bootloader.path=ariadne
-ariadne1280M.bootloader.file=ariadne_atmega1280.hex
-ariadne1280M.bootloader.unlock_bits=0x3F
-ariadne1280M.bootloader.lock_bits=0x0F
-
-ariadne1280M.build.mcu=atmega1280
-ariadne1280M.build.f_cpu=16000000L
-ariadne1280M.build.core=arduino:arduino
-ariadne1280M.build.variant=arduino:mega
+semboot328U.build.mcu=atmega328p
+semboot328U.build.f_cpu=16000000L
+semboot328U.build.core=arduino:arduino
+semboot328U.build.variant=arduino:standard
 
 ##############################################################
 
-ariadne1284W5100.name=SEM-Boot Atmega 1284p (W5100)
-ariadne1284W5100.upload.protocol=arduino
-#ariadne1284W5100.upload.maximum_size=130048 #if no boot loader is present
-ariadne1284W5100.upload.maximum_size=126976
-ariadne1284W5100.upload.speed=57600
-ariadne1284W5100.bootloader.low_fuses=0xFF
-ariadne1284W5100.bootloader.high_fuses=0xD8
-ariadne1284W5100.bootloader.extended_fuses=0xFD
-ariadne1284W5100.bootloader.path=ariadne
-ariadne1284W5100.bootloader.file= ariadne_atmega1284_w5100.hex
-ariadne1284W5100.bootloader.unlock_bits=0x3F
-ariadne1284W5100.bootloader.lock_bits=0x0F
+semboot328E.name=Arduino Ethernet (Semboot Bootloader)
 
-ariadne1284W5100.build.mcu=atmega1284p
-ariadne1284W5100.build.f_cpu=16000000L
-ariadne1284W5100.build.core=arduino:arduino
-#ariadne1284W5100.build.core=standard
-ariadne1284W5100.build.variant=standard
+semboot328E.upload.protocol=arduino
+semboot328E.upload.maximum_size=28672
+semboot328E.upload.speed=115200
 
-##############################################################
+semboot328E.bootloader.low_fuses=0xFF
+semboot328E.bootloader.high_fuses=0xD8
+semboot328E.bootloader.extended_fuses=0x05
+semboot328E.bootloader.path=semboot
+semboot328E.bootloader.file=semboot_atmega328_ethernet.hex
+semboot328E.bootloader.unlock_bits=0x3F
+semboot328E.bootloader.lock_bits=0x0F
 
-ariadne1284W5200.name=SEM-Boot Atmega 1284p (W5200)
-ariadne1284W5200.upload.protocol=arduino
-#ariadne1284W5200.upload.maximum_size=130048 #if no boot loader is present
-ariadne1284W5200.upload.maximum_size=126976
-ariadne1284W5200.upload.speed=57600
-ariadne1284W5200.bootloader.low_fuses=0xFF
-ariadne1284W5200.bootloader.high_fuses=0xD8
-ariadne1284W5200.bootloader.extended_fuses=0xFD
-ariadne1284W5200.bootloader.path=ariadne
-ariadne1284W5200.bootloader.file= ariadne_atmega1284_w5200.hex
-ariadne1284W5200.bootloader.unlock_bits=0x3F
-ariadne1284W5200.bootloader.lock_bits=0x0F
-
-ariadne1284W5200.build.mcu=atmega1284p
-ariadne1284W5200.build.f_cpu=16000000L
-ariadne1284W5200.build.core=arduino:arduino
-#ariadne1284W5200.build.core=standard
-ariadne1284W5200.build.variant=standard
+semboot328E.build.mcu=atmega328p
+semboot328E.build.f_cpu=16000000L
+semboot328E.build.core=arduino:arduino
+semboot328E.build.variant=arduino:standard
 
 ##############################################################
 
-ariadne1284W5500.name=SEM-Boot Atmega 1284p (W5500)
-ariadne1284W5500.upload.protocol=arduino
-#ariadne1284W5500.upload.maximum_size=130048 #if no boot loader is present
-ariadne1284W5500.upload.maximum_size=126976
-ariadne1284W5500.upload.speed=57600
-ariadne1284W5500.bootloader.low_fuses=0xFF
-ariadne1284W5500.bootloader.high_fuses=0xD8
-ariadne1284W5500.bootloader.extended_fuses=0xFD
-ariadne1284W5500.bootloader.path=ariadne
-ariadne1284W5500.bootloader.file= ariadne_atmega1284_w5500.hex
-ariadne1284W5500.bootloader.unlock_bits=0x3F
-ariadne1284W5500.bootloader.lock_bits=0x0F
+semboot1280M.name=Arduino Mega 1280 (Semboot Bootloader)
 
-ariadne1284W5500.build.mcu=atmega1284p
-ariadne1284W5500.build.f_cpu=16000000L
-ariadne1284W5500.build.core=arduino:arduino
-#ariadne1284W5500.build.core=standard
-ariadne1284W5500.build.variant=standard
+semboot1280M.upload.protocol=arduino
+semboot1280M.upload.maximum_size=126976
+semboot1280M.upload.speed=57600
 
-##############################################################
+semboot1280M.bootloader.low_fuses=0xFF
+semboot1280M.bootloader.high_fuses=0xDA
+semboot1280M.bootloader.extended_fuses=0xF5
+semboot1280M.bootloader.path=semboot
+semboot1280M.bootloader.file=semboot_atmega1280.hex
+semboot1280M.bootloader.unlock_bits=0x3F
+semboot1280M.bootloader.lock_bits=0x0F
 
-ariadne2560M.name=Arduino Mega 2560 (Ariadne Bootloader)
-
-ariadne2560M.upload.protocol=stk500v2
-ariadne2560M.upload.maximum_size=258048
-ariadne2560M.upload.speed=115200
-
-ariadne2560M.bootloader.low_fuses=0xFF
-ariadne2560M.bootloader.high_fuses=0xD8
-ariadne2560M.bootloader.extended_fuses=0xFD
-ariadne2560M.bootloader.path=ariadne
-ariadne2560M.bootloader.file=ariadne_atmega2560.hex
-ariadne2560M.bootloader.unlock_bits=0x3F
-ariadne2560M.bootloader.lock_bits=0x0F
-
-ariadne2560M.build.mcu=atmega2560
-ariadne2560M.build.f_cpu=16000000L
-ariadne2560M.build.core=arduino:arduino
-ariadne2560M.build.variant=arduino:mega
-
+semboot1280M.build.mcu=atmega1280
+semboot1280M.build.f_cpu=16000000L
+semboot1280M.build.core=arduino:arduino
+semboot1280M.build.variant=arduino:mega
 
 ##############################################################
 
-ariadne328U_debug.name=Arduino Uno (Ariadne Bootloader Debug)
+semboot1284W5100.name=SEM-Boot Atmega 1284p (W5100)
+semboot1284W5100.upload.protocol=arduino
+#semboot1284W5100.upload.maximum_size=130048 #if no boot loader is present
+semboot1284W5100.upload.maximum_size=126976
+semboot1284W5100.upload.speed=57600
+semboot1284W5100.bootloader.low_fuses=0xFF
+semboot1284W5100.bootloader.high_fuses=0xD8
+semboot1284W5100.bootloader.extended_fuses=0xFD
+semboot1284W5100.bootloader.path=semboot
+semboot1284W5100.bootloader.file=semboot_atmega1284_w5100.hex
+semboot1284W5100.bootloader.unlock_bits=0x3F
+semboot1284W5100.bootloader.lock_bits=0x0F
 
-ariadne328U_debug.upload.protocol=arduino
-ariadne328U_debug.upload.maximum_size=28672
-ariadne328U_debug.upload.speed=115200
-
-ariadne328U_debug.bootloader.low_fuses=0xFF
-ariadne328U_debug.bootloader.high_fuses=0xD8
-ariadne328U_debug.bootloader.extended_fuses=0x05
-ariadne328U_debug.bootloader.path=ariadne
-ariadne328U_debug.bootloader.file=ariadne_debug328.hex
-ariadne328U_debug.bootloader.unlock_bits=0x3F
-ariadne328U_debug.bootloader.lock_bits=0x0F
-
-ariadne328U_debug.build.mcu=atmega328p
-ariadne328U_debug.build.f_cpu=16000000L
-ariadne328U_debug.build.core=arduino:arduino
-ariadne328U_debug.build.variant=arduino:standard
-
-##############################################################
-
-ariadne2560M_debug.name=Arduino Mega 2560 (Ariadne Bootloader Debug)
-
-ariadne2560M_debug.upload.protocol=stk500v2
-ariadne2560M_debug.upload.maximum_size=258048
-ariadne2560M_debug.upload.speed=115200
-
-ariadne2560M_debug.bootloader.low_fuses=0xFF
-ariadne2560M_debug.bootloader.high_fuses=0xD8
-ariadne2560M_debug.bootloader.extended_fuses=0xFD
-ariadne2560M_debug.bootloader.path=ariadne
-ariadne2560M_debug.bootloader.file=ariadne_debug2560.hex
-ariadne2560M_debug.bootloader.unlock_bits=0x3F
-ariadne2560M_debug.bootloader.lock_bits=0x0F
-
-ariadne2560M_debug.build.mcu=atmega2560
-ariadne2560M_debug.build.f_cpu=16000000L
-ariadne2560M_debug.build.core=arduino:arduino
-ariadne2560M_debug.build.variant=arduino:mega
+semboot1284W5100.build.mcu=atmega1284p
+semboot1284W5100.build.f_cpu=16000000L
+semboot1284W5100.build.core=arduino:arduino
+#semboot1284W5100.build.core=standard
+semboot1284W5100.build.variant=standard
 
 ##############################################################
 
-ariadne1284P_debug.name=Atmega 1284p (Ariadne Bootloader) Debug
-ariadne1284P_debug.upload.protocol=arduino
-#ariadne1284P_debug.upload.maximum_size=130048 #if no boot loader is present
-ariadne1284P_debug.upload.maximum_size=126976
-ariadne1284P_debug.upload.speed=57600
-ariadne1284P_debug.bootloader.low_fuses=0xFF
-ariadne1284P_debug.bootloader.high_fuses=0xD8
-ariadne1284P_debug.bootloader.extended_fuses=0xFD
-ariadne1284P_debug.bootloader.path=ariadne
-ariadne1284P_debug.bootloader.file= ariadne_debug1284p.hex
-ariadne1284P_debug.bootloader.unlock_bits=0x3F
-ariadne1284P_debug.bootloader.lock_bits=0x0F
+semboot1284W5200.name=SEM-Boot Atmega 1284p (W5200)
+semboot1284W5200.upload.protocol=arduino
+#semboot1284W5200.upload.maximum_size=130048 #if no boot loader is present
+semboot1284W5200.upload.maximum_size=126976
+semboot1284W5200.upload.speed=57600
+semboot1284W5200.bootloader.low_fuses=0xFF
+semboot1284W5200.bootloader.high_fuses=0xD8
+semboot1284W5200.bootloader.extended_fuses=0xFD
+semboot1284W5200.bootloader.path=semboot
+semboot1284W5200.bootloader.file=semboot_atmega1284_w5200.hex
+semboot1284W5200.bootloader.unlock_bits=0x3F
+semboot1284W5200.bootloader.lock_bits=0x0F
 
-ariadne1284P_debug.build.mcu=atmega1284p
-ariadne1284P_debug.build.f_cpu=16000000L
-ariadne1284P_debug.build.core=arduino:arduino
-#ariadne1284P_debug.build.core=standard
-ariadne1284P_debug.build.variant=standard
+semboot1284W5200.build.mcu=atmega1284p
+semboot1284W5200.build.f_cpu=16000000L
+semboot1284W5200.build.core=arduino:arduino
+#semboot1284W5200.build.core=standard
+semboot1284W5200.build.variant=standard
+
+##############################################################
+
+semboot1284W5500.name=SEM-Boot Atmega 1284p (W5500)
+semboot1284W5500.upload.protocol=arduino
+#semboot1284W5500.upload.maximum_size=130048 #if no boot loader is present
+semboot1284W5500.upload.maximum_size=126976
+semboot1284W5500.upload.speed=57600
+semboot1284W5500.bootloader.low_fuses=0xFF
+semboot1284W5500.bootloader.high_fuses=0xD8
+semboot1284W5500.bootloader.extended_fuses=0xFD
+semboot1284W5500.bootloader.path=semboot
+semboot1284W5500.bootloader.file=semboot_atmega1284_w5500.hex
+semboot1284W5500.bootloader.unlock_bits=0x3F
+semboot1284W5500.bootloader.lock_bits=0x0F
+
+semboot1284W5500.build.mcu=atmega1284p
+semboot1284W5500.build.f_cpu=16000000L
+semboot1284W5500.build.core=arduino:arduino
+#semboot1284W5500.build.core=standard
+semboot1284W5500.build.variant=standard
+
+##############################################################
+
+semboot2560M.name=Arduino Mega 2560 (Semboot Bootloader)
+
+semboot2560M.upload.protocol=stk500v2
+semboot2560M.upload.maximum_size=258048
+semboot2560M.upload.speed=115200
+
+semboot2560M.bootloader.low_fuses=0xFF
+semboot2560M.bootloader.high_fuses=0xD8
+semboot2560M.bootloader.extended_fuses=0xFD
+semboot2560M.bootloader.path=semboot
+semboot2560M.bootloader.file=semboot_atmega2560.hex
+semboot2560M.bootloader.unlock_bits=0x3F
+semboot2560M.bootloader.lock_bits=0x0F
+
+semboot2560M.build.mcu=atmega2560
+semboot2560M.build.f_cpu=16000000L
+semboot2560M.build.core=arduino:arduino
+semboot2560M.build.variant=arduino:mega
+
+
+##############################################################
+
+semboot328U_debug.name=Arduino Uno (Semboot Bootloader Debug)
+
+semboot328U_debug.upload.protocol=arduino
+semboot328U_debug.upload.maximum_size=28672
+semboot328U_debug.upload.speed=115200
+
+semboot328U_debug.bootloader.low_fuses=0xFF
+semboot328U_debug.bootloader.high_fuses=0xD8
+semboot328U_debug.bootloader.extended_fuses=0x05
+semboot328U_debug.bootloader.path=semboot
+semboot328U_debug.bootloader.file=semboot_debug328.hex
+semboot328U_debug.bootloader.unlock_bits=0x3F
+semboot328U_debug.bootloader.lock_bits=0x0F
+
+semboot328U_debug.build.mcu=atmega328p
+semboot328U_debug.build.f_cpu=16000000L
+semboot328U_debug.build.core=arduino:arduino
+semboot328U_debug.build.variant=arduino:standard
+
+##############################################################
+
+semboot2560M_debug.name=Arduino Mega 2560 (Semboot Bootloader Debug)
+
+semboot2560M_debug.upload.protocol=stk500v2
+semboot2560M_debug.upload.maximum_size=258048
+semboot2560M_debug.upload.speed=115200
+
+semboot2560M_debug.bootloader.low_fuses=0xFF
+semboot2560M_debug.bootloader.high_fuses=0xD8
+semboot2560M_debug.bootloader.extended_fuses=0xFD
+semboot2560M_debug.bootloader.path=semboot
+semboot2560M_debug.bootloader.file=semboot_debug2560.hex
+semboot2560M_debug.bootloader.unlock_bits=0x3F
+semboot2560M_debug.bootloader.lock_bits=0x0F
+
+semboot2560M_debug.build.mcu=atmega2560
+semboot2560M_debug.build.f_cpu=16000000L
+semboot2560M_debug.build.core=arduino:arduino
+semboot2560M_debug.build.variant=arduino:mega
+
+##############################################################
+
+semboot1284P_debug.name=Atmega 1284p (Semboot Bootloader) Debug
+semboot1284P_debug.upload.protocol=arduino
+#semboot1284P_debug.upload.maximum_size=130048 #if no boot loader is present
+semboot1284P_debug.upload.maximum_size=126976
+semboot1284P_debug.upload.speed=57600
+semboot1284P_debug.bootloader.low_fuses=0xFF
+semboot1284P_debug.bootloader.high_fuses=0xD8
+semboot1284P_debug.bootloader.extended_fuses=0xFD
+semboot1284P_debug.bootloader.path=semboot
+semboot1284P_debug.bootloader.file=semboot_debug1284p.hex
+semboot1284P_debug.bootloader.unlock_bits=0x3F
+semboot1284P_debug.bootloader.lock_bits=0x0F
+
+semboot1284P_debug.build.mcu=atmega1284p
+semboot1284P_debug.build.f_cpu=16000000L
+semboot1284P_debug.build.core=arduino:arduino
+#semboot1284P_debug.build.core=standard
+semboot1284P_debug.build.variant=standard
 
