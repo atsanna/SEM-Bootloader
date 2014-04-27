@@ -388,7 +388,7 @@ atmega1284_w5500_isp: isp
 
 debug1284_w5100: TARGET = debug1284_w5100
 debug1284_w5100: MCU_TARGET = atmega1284p
-debug1284_w5100: CFLAGS += '-DDEBUG_TFTP=1' '-DBAUD_RATE=115200'
+debug1284_w5100: CFLAGS += '-DDEBUG_MAIN=1' '-DBAUD_RATE=115200'
 debug1284_w5100: AVR_FREQ = 16000000L
 debug1284_w5100: LDSECTIONS  = -Wl,--section-start=.text=0x1f000
 debug1284_w5100: $(PROGRAM)_debug1284_w5100.hex
