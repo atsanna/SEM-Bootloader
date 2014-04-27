@@ -15,6 +15,7 @@
 #define EEPROM_PORT     ((uint8_t*)24)
 #define EEPROM_SIG_4    ((uint8_t*)26)
 #define EEPROM_PASS     ((uint8_t*)27)
+#define EEPROM_UPDATE_FLAG  ((uint8_t*)62)
 #define EEPROM_END      ((uint8_t*)63)
 
 #define EEPROM_SETTINGS_SIZE 18
