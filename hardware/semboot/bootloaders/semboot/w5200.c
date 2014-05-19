@@ -75,26 +75,14 @@ void netInit(void)
 //	for(i = 0; i < REGISTER_BLOCK_SIZE-2; i++)
 //		spiWriteReg(i, registerBuffer[i]);
 
-		spiWriteReg(0, 0, registerBuffer[0]);
+	/** Configure Wiznet chip. Network settings */
+	for(i = 0; i < REGISTER_BLOCK_SIZE-2; i++)
+		spiWriteReg(i, 0, registerBuffer[i]);
 
-                for (i=0; i<8; i++) {
-                  spiWriteReg((0x4000 + i * 0x100 + 0x001F), 0, 0x02);
-                  spiWriteReg((0x4000 + i * 0x100 + 0x001E), 0, 0x02);
-                }
-                
-		for(i = 9; i < 15; i++) {
-			spiWriteReg(i, 0, registerBuffer[i]);
-		}
-		for(i = 15; i < 19; i++) {
-			spiWriteReg(i, 0, registerBuffer[i]);
-		}
-		for(i = 1; i < 5; i++) {
-			spiWriteReg(i, 0, registerBuffer[i]);
-		}
-		for(i = 5; i < 9; i++) {
-			spiWriteReg(i, 0, registerBuffer[i]);
-		}
-		
+        for (i=0; i<8; i++) {
+        	spiWriteReg((0x4000 + i * 0x100 + 0x001F), 0, 0x02);
+                spiWriteReg((0x4000 + i * 0x100 + 0x001E), 0, 0x02);
+        }
 
 	DBG_NET(tracePGMlnNet(mDebugNet_DONE);)
 }
