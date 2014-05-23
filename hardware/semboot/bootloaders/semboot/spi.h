@@ -81,6 +81,8 @@
 	#define LED_DDR     DDRD
 	#define LED_PORT    PORTD
 	#define LED         PIND7
+    #define LEDBLUE     PIND4
+
 /** Leonardo */
 #elif defined(__AVR_ATmega32U4__)
 	#error "Leonardo not supported yet"

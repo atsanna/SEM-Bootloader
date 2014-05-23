@@ -395,6 +395,16 @@ static uint8_t processPacket(void)
 
 static void sendResponse(uint16_t response)
 {
+#if (W5200 > 0)
+#if defined(__AVR_ATmega1284P__)
+    if ( (PIND & _BV(LEDBLUE)) == _BV(LEDBLUE) ) {//if blue led is on
+        LED_PORT &= ~_BV(LEDBLUE); // Led pin low
+    }
+    else {
+        LED_PORT ^= _BV(LEDBLUE);// Led pin high
+    }
+#endif
+#endif
 	uint8_t txBuffer[100];
 	uint8_t* txPtr = txBuffer;
 	uint8_t packetLength;
