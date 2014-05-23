@@ -40,6 +40,11 @@
 #endif
 
 void updateLed(void);
+#if (W5200 > 0)
+#if defined(__AVR_ATmega1284P__)
+void updateLedBlue(void);
+#endif
+#endif
 void resetTick(void);
 uint8_t timedOut(void);
 void appStart(void);

@@ -19,7 +19,6 @@
 static uint16_t last_timer_1;
 static uint16_t tick = 0;
 
-
 void updateLed(void)
 {
 	uint16_t next_timer_1 = TCNT1;
@@ -41,6 +40,13 @@ void updateLed(void)
 
 	last_timer_1 = next_timer_1;
 }
+#if (W5200 > 0)
+#if defined(__AVR_ATmega1284P__)
+void updateLedBlue(void)
+{
+}
+#endif
+#endif
 
 void resetTick(void)
 {

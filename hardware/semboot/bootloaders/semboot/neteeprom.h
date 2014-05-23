@@ -21,6 +21,9 @@
 #define EEPROM_SETTINGS_SIZE 18
 #define REGISTER_BLOCK_SIZE  28
 
+#define FLAG_VALUE_FALSE 0
+#define FLAG_VALUE_TRUE 1
+
 /* EEPROM values */
 #define ARIADNE_MAJVER 0
 #define ARIADNE_MINVER 4

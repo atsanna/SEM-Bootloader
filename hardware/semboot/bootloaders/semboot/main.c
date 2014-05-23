@@ -67,7 +67,53 @@ int main(void)
 		eeprom_write_byte(EEPROM_MINVER, ARIADNE_MINVER);
 	
     uint8_t updateFlag = 0;
-    if( (eeprom_read_byte(EEPROM_UPDATE_FLAG) == 1) || !((PIND & (1<<5)) == (1<<5)) || eeprom_read_byte(EEPROM_IMG_STAT) != EEPROM_IMG_OK_VALUE) {
+    
+    
+    if (!((PIND & (1<<5)) == (1<<5)) ) { //update button pressed and reset to default IP
+        updateFlag = 1;
+#if (W5200 > 0)
+#if defined(__AVR_ATmega1284P__)
+        static uint16_t last_timer_2;
+        static uint16_t tick2 = 0;
+        
+        while (!((PIND & (1<<5)) == (1<<5)) ) {
+            uint16_t next_timer_2 = TCNT1;
+            
+            if(next_timer_2 & 0x800) LED_PORT ^= _BV(LEDBLUE); // Led pin high
+            else LED_PORT &= ~_BV(LEDBLUE); // Led pin low
+            
+            if(next_timer_2 < last_timer_2) {
+                tick2++;
+            }
+            
+            last_timer_2 = next_timer_2;
+
+            
+            if (tick2 > 2) {
+                LED_PORT ^= _BV(LEDBLUE);
+                 uint8_t netBuffer[20] = {
+                     0xFF,         // default SIG1
+                     0xFF,         // default SIG2
+                     GW_ADDR,      // GWR Gateway IP Address Register
+                     SUB_MASK,      // SUBR Subnet Mask Register
+                     MAC_ADDR,     // SHAR Source Hardware Address Register
+                     IP_ADDR,      // SIPR Source IP Address Register
+                 };
+                 for (int a = 3;a < 23;a++) {
+                    eeprom_write_byte(a, netBuffer[a-3]);
+                 }
+                
+                _delay_ms(1000);
+                LED_PORT &= ~_BV(LEDBLUE);
+                break;
+            }
+            
+        }
+#endif
+#endif
+
+    }
+    else if( (eeprom_read_byte(EEPROM_UPDATE_FLAG) == 1) || eeprom_read_byte(EEPROM_IMG_STAT) != EEPROM_IMG_OK_VALUE) {
         //If the update flag was set from userspace || the button 'default' is being pressed || no valid image has been written => no timeout will occur
  		updateFlag = 1;
  		eeprom_write_byte(EEPROM_UPDATE_FLAG, 0);//Reset update flag so that next reboot normal boot continues
