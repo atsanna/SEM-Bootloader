@@ -33,7 +33,6 @@ int main(void)
 {
 	/* Disable the watchdog timer to prevent
 	 * eternal reset loop of doom and despair */
-	uint8_t ch = MCUSR;
 	MCUSR = 0;
 	wdt_disable();
 
@@ -66,13 +65,14 @@ int main(void)
 	if(eeprom_read_byte(EEPROM_MINVER) != ARIADNE_MINVER)
 		eeprom_write_byte(EEPROM_MINVER, ARIADNE_MINVER);
 
-	uint8_t updateFlag = 0;
- 	if(eeprom_read_byte(EEPROM_UPDATE_FLAG) == 1) { //If the update flag was set, no timeout will occur
+    	uint8_t updateFlag = 0;
+    	if( (eeprom_read_byte(EEPROM_UPDATE_FLAG) == 1) || !((PIND & (1UL<<5)) == (1UL<<5)) || eeprom_read_byte(EEPROM_IMG_STAT) != EEPROM_IMG_OK_VALUE) {
+        //If the update flag was set from userspace || the button 'default' is being pressed || no valid image has been written => no timeout will occur
  		updateFlag = 1;
  		eeprom_write_byte(EEPROM_UPDATE_FLAG, 0);//Reset update flag so that next reboot normal boot continues
  	}
- 	else if(eeprom_read_byte(EEPROM_UPDATE_FLAG) == 2 || !(ch & _BV(EXTRF))) { //Updating disabled || if not external (hard reset) skip bootloader
- 		appStart();
+    	else {
+		appStart();
  	}
 
 	//Initialize UART communication
