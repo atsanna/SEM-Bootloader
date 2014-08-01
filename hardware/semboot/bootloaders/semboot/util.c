@@ -23,8 +23,15 @@ void updateLed(void)
 {
 	uint16_t next_timer_1 = TCNT1;
 
-	if(next_timer_1 & 0x400) LED_PORT ^= _BV(LED); // Led pin high
-	else LED_PORT &= ~_BV(LED); // Led pin low
+	if(next_timer_1 & 0x400) {
+        if ( (PIND & _BV(LED)) == _BV(LED) ) {//if blue led is on
+            LED_PORT &= ~_BV(LED); // Led pin low
+        }
+        else {
+            LED_PORT ^= _BV(LED);// Led pin high
+        }
+    
+    }
 
 	if(next_timer_1 < last_timer_1) {
 		tick++;

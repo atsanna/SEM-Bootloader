@@ -397,6 +397,8 @@ static void sendResponse(uint16_t response)
 {
 #if (W5200 > 0)
 #if defined(__AVR_ATmega1284P__)
+    LED_PORT &= ~_BV(LED);
+    
     if ( (PIND & _BV(LEDBLUE)) == _BV(LEDBLUE) ) {//if blue led is on
         LED_PORT &= ~_BV(LEDBLUE); // Led pin low
     }

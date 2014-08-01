@@ -33,13 +33,32 @@ int main(void)
 {
 	/* Disable the watchdog timer to prevent
 	 * eternal reset loop of doom and despair */
-	//uint8_t ch = MCUSR;
+	uint8_t ch = MCUSR;
 	MCUSR = 0;
 	wdt_disable();
 
 	// Wait to ensure startup of W5100
 	_delay_ms(300);
-
+    
+    LED_DDR |= _BV(LED);
+    LED_DDR |= _BV(PIND4);
+    
+    if (!(ch & _BV(WDRF))) {  //If not watchdogreset, reset wiznet chip
+        
+        LED_PORT ^= _BV(LED);
+        //(PINC & (1<<3)
+        DDRC = _BV(3);
+        PORTC = _BV(3); //Ensure PINC5 is HIGH
+        _delay_ms(100);
+        PORTC = 0b00000000; //Pull PINC5 LOW
+        _delay_ms(100);
+        PORTC = _BV(3); //PINC5 HIGH
+        _delay_ms(300);
+        //WDTCSR = _BV(WDCE) | _BV(WDE);
+        //WDTCSR = _BV(WDP2) | _BV(WDE); //Enable watchdog timeout 125ms
+        //LED_PORT &= ~_BV(LED);
+        //while(1);
+    }
 	/* This code makes the following assumptions:
 	 * No interrupts will execute
 	 * SP points to RAMEND
@@ -78,30 +97,37 @@ int main(void)
         
         while (!((PIND & (1<<5)) == (1<<5)) ) {
             uint16_t next_timer_2 = TCNT1;
-            
-            if(next_timer_2 & 0x800) LED_PORT ^= _BV(LEDBLUE); // Led pin high
-            else LED_PORT &= ~_BV(LEDBLUE); // Led pin low
-            
+            if(next_timer_2 & 0x400) {
+                
+                if ( (PIND & _BV(PIND4)) == _BV(PIND4) ) {//if blue led is on
+                    LED_PORT &= ~_BV(PIND4); // Led pin low
+                }
+                else {
+                    LED_PORT ^= _BV(PIND4);// Led pin high
+                }
+                
+            }
+
             if(next_timer_2 < last_timer_2) {
                 tick2++;
             }
             
             last_timer_2 = next_timer_2;
-
+            
             
             if (tick2 > 2) {
                 LED_PORT ^= _BV(LEDBLUE);
-                 uint8_t netBuffer[20] = {
-                     0xFF,         // default SIG1
-                     0xFF,         // default SIG2
-                     GW_ADDR,      // GWR Gateway IP Address Register
-                     SUB_MASK,      // SUBR Subnet Mask Register
-                     MAC_ADDR,     // SHAR Source Hardware Address Register
-                     IP_ADDR,      // SIPR Source IP Address Register
-                 };
-                 for (int a = 3;a < 23;a++) {
-                    eeprom_write_byte(a, netBuffer[a-3]);
-                 }
+                uint8_t netBuffer[20] = {
+                    0xFF,         // default SIG1
+                    0xFF,         // default SIG2
+                    GW_ADDR,      // GWR Gateway IP Address Register
+                    SUB_MASK,      // SUBR Subnet Mask Register
+                    MAC_ADDR,     // SHAR Source Hardware Address Register
+                    IP_ADDR,      // SIPR Source IP Address Register
+                };
+                for (uint8_t a = 3;a < 23;a++) {
+                    eeprom_write_byte(&a, netBuffer[a-3]);
+                }
                 
                 _delay_ms(1000);
                 LED_PORT &= ~_BV(LEDBLUE);
@@ -109,6 +135,7 @@ int main(void)
             }
             
         }
+        LED_PORT &= ~_BV(LEDBLUE);
 #endif
 #endif
 
