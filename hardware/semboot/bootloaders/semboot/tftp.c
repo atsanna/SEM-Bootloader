@@ -129,7 +129,7 @@ static uint8_t processPacket(void)
 
 #if (W5500 > 0)
 
-	if(readPointer == 0) readPointer = 0x0000;
+	//W5500 auto increments the readpointer by memory mapping a 16bit addr
 
 #else
 
@@ -150,7 +150,8 @@ static uint8_t processPacket(void)
 
 		*bufPtr++ = spiReadReg(readPointer++, S3_RXBUF_CB);
 
-		if(readPointer == 0xFFFF) readPointer = 0x0000; //changed 0c0800 to 0xFFFF, fixes a 4th packet retransmit bug. upload speed changed from 500sec to 90sec for 100kb program
+		//W5500 auto increments the readpointer by memory mapping a 16bit addr
+		//Use uint16_t overflow from 0xFFFF to 0x10000 to follow W5500 internal pointer
 #else
 
 		*bufPtr++ = spiReadReg(readPointer++, 0);
@@ -467,7 +468,8 @@ static void sendResponse(uint16_t response)
 	while(packetLength--) {
 		spiWriteReg(writePointer++, S3_TXBUF_CB, *txPtr++);
 #if (W5500 > 0)
-		if(writePointer == 0xFFFF) writePointer = 0x0000;  //changed 0c0800 to 0xFFFF, fixes a 4th packet retransmit bug. upload speed changed from 500sec to 90sec for 100kb program
+		//W5500 auto increments the readpointer by memory mapping a 16bit addr
+		//Use uint16_t overflow from 0xFFFF to 0x10000 to follow W5500 internal pointer
 	}
 
 	spiWriteWord(REG_S3_TX_WR0, S3_W_CB, writePointer);
